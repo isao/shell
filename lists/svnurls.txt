@@ -1,0 +1,4 @@
+http://etherjar.com/svn/trunk
+http://svn:81/svn/TAN/ascr/trunk
+http://svn:81/svn/TAN/render/trunk
+https://smacs.googlecode.com/svn/trunk

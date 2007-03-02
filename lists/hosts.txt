@@ -1,0 +1,12 @@
+10.0.130.168
+10.0.50.170
+cvs
+cvs.adt.adprofile.net
+etherjar.com
+etherwerks.com
+jump1.rwt
+qaa13.qanet1
+qaa14.qanet1
+qab05-1.qanet1
+shell.sf.net
+vm-iyagi
