@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# michael conrad tilstra (tadpol@tadpol.org) Sun Feb 23 17:23:19 CST 2003 
+
+for i in "$@"
+do
+/Developer/Tools/SetFile -c 'R*ch' -t 'TEXT' "$i"
+done

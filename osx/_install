@@ -1,0 +1,74 @@
+#!/bin/sh
+# http://www.macosxhints.com/article.php?story=20010927011840284
+if [ -e /usr/bin/defaults ]
+then
+	/usr/bin/defaults write "Apple Global Domain" AppleScrollBarVariant DoubleBoth
+fi
+
+cvsshelldir="$HOME/Cvs/shell"
+if [ ! -e $cvsshelldir ]
+then
+	echo "* error $cvsshelldir does not exist. cvs get -d:ext:isao@etherwerks.com:/usr/home/isao/cvs get shell"
+	exit
+fi
+
+#
+# link files in cvs:/shell to their expected places
+#
+echo "* linking $cvsshelldir/login.tcsh to ~/.tcshrc"
+ln -fsv $cvsshelldir/login.tcsh $HOME/.tcshrc
+
+f=/usr/local/isao
+if [ ! -d $f ]
+then
+	echo "* creating $f (may require sudo password)"
+	sudo mkdir -p $f
+	sudo chown isao $f
+	sudo chmod go= $f
+else
+	echo "** $f exists, skipping step"
+fi
+
+echo "* linking $cvsshelldir/*.{sh,pl} to $f"
+ln -fsv $cvsshelldir/*.{sh,pl} $f
+
+#
+# dotfiles
+#
+f=$HOME/.hushlogin
+if [ ! -e $f ]
+then
+	echo "* create $f to supress /etc/motd login message"
+	touch $f
+else
+	echo "** $f exists, skipping step"
+fi
+
+f=$HOME/.ssh/ssh_config
+if [ ! -e $f ]
+then
+	echo "* create $f"
+	{ cat <<FILE
+#see /etc/ssh_config or man ssh_config for more options"
+ForwardAgent yes
+FILE
+	} > $f
+	chmod go= $f
+else
+	echo "** $f exists, skipping step"
+fi
+
+f=$HOME/.cvsignore
+if [ ! -e $f ]
+then
+	echo "* create $f"
+	{ cat <<FILE
+.#*
+.DS_Store
+._*
+FILE
+	} > $f
+	chmod go= $f
+else
+	echo "** $f exists, skipping step"
+fi

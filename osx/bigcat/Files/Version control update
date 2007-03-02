@@ -1,0 +1,34 @@
+#!/bin/sh -e
+#Big Cat shell script to update the selected file or directory in cvs or svn
+for i in $@
+do
+	#get a selection's directory
+	if [ -d $i ]
+	then
+		d=$i
+		f=''
+	else
+		d=`dirname $i`
+		f=`basename $i`
+	fi
+
+	{	echo "updating $i"
+
+		#CVS
+		if [ -d $d/CVS ]
+		then
+			cd $d
+			cvs -q up -PA $f
+
+		#SVN
+		elif [ -d $d/.svn ]
+		then
+			/opt/local/bin/svn update $i
+
+		#neither
+		else
+			echo "oops, $i is neither a cvs or svn sandbox"
+
+		fi
+	} 2>&1 | logger &
+done
