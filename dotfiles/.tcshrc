@@ -1,0 +1,157 @@
+onintr -  # ignore interrupts
+
+# path
+#/opt/local/bin        macports
+#/usr/local/bin        my scripts
+#/usr/local/mysql/bin  mysql.com
+#/usr/local/php5/bin   entropy.ch
+#/usr/bin
+#/usr/sbin
+#/sbin
+#/bin
+set path=(/opt/local/bin /usr/local/{,mysql/,php5/}bin /usr/{,s}bin /{s,}bin)
+
+# app env vars
+setenv EDITOR `which bbedit-w.sh nano edit jpico pico|grep '^/'|head -1`
+setenv CVS_RSH ssh
+setenv CVSROOT :ext:isao@etherwerks.com:/home/isao/cvs
+setenv CVSEDITOR $EDITOR
+setenv CVSIGNORE '.DS_Store,._?*,.FBC*,.#?*'
+setenv SVN_EDITOR $EDITOR
+setenv LESS --tabs=2
+setenv RSYNC_RSH ssh
+setenv VISUAL $EDITOR
+
+# work stuff
+if (-r ./.tcshrc-adteractive ) then
+  source ./.tcshrc-adteractive
+endif
+
+# skip the rest if non-interactive shell
+if ($?prompt && $?TERM) then
+
+# aliases
+alias . pwd
+alias .. 'cd ..'
+alias cd.. 'cd ..'
+if (-x /usr/local/bin/cdargs) then
+  alias cv '/usr/local/bin/cdargs \!* && cd `cat ~/.cdargsresult`; pwd; ls -F'
+  alias ca '/usr/local/bin/cdargs --add=:\!*":"$cwd'
+  set cdargsls=(`sed -e 's/^.+ //' ~/.cdargs`)
+  complete cv 'n@*@`sed -e "s/ .*//" ~/.cdargs`@'
+endif
+alias calc 'awk "BEGIN{ print \!* }" '
+# or with fixed output format:
+# alias calcfx 'gawk -v CONVFMT="%12.2f" -v OFMT="%.9g" "BEGIN{  print \!* }"'
+#alias cwdcmd ls # after cd commands
+alias e $EDITOR
+alias ip "ifconfig | grep 'inet '"
+alias ls 'ls-F'
+alias ll '/bin/ls -lF \!*'
+alias lsd '/bin/ls -l \!* | grep ^d'  # ls dirs only
+alias ls. '/bin/ls -dF .?*'  # ls dot files & dirs only
+alias man2txt 'man \!* | col -b > "man_\!*.txt"'
+alias dict "curl -s 'dict://dict.org/d:\!*' | egrep -v '^[0-9]{3} .*|^\.'"
+alias word 'grep \!* /usr/share/dict/words' # Grep thru dictionary
+alias rmmacmeta "find \!* \( -name '.DS_Store' -or -name '._*' \) -exec rm -v \{\} \;"
+alias rot13 'perl -wne "tr/a-zA-Z/n-za-mN-ZA-M/;print;"'
+
+# completions
+if (-x /usr/bin/bbedit) then
+  complete bbedit 'c/--/(background clean create front-window new-window print pipe-title worksheet view-top resume wait)/'
+endif
+complete {cd,lsd,pushd,popd,rmdir} 'C/*/d/'
+complete chgrp 'p/1/g/'
+complete df 'c/--/(all human-readable kilobytes local megabytes)/'
+complete du 'c/--/(all total dereference-args human-readable kilobytes count-links dereference megabytes separate-dirs summarize one-file-system exclude-from exclude max-depth/'
+complete find 'n/-{,i}name/f/' 'n/-newer/f/' 'n/-{,n}cpio/f/' 'n/-exec/c/' 'n/-ok/c/' 'n/-user/u/' 'n/-group/g/' 'n/-fstype/(nfs 4.2)/' 'n/-type/(b c d f l p s)/' 'c/-/(and atime cpio ctime depth empty exec fstype group iname inum iregex ls maxdepth mindepth mtime name ncpio newer nogroup not nouser ok or path perm print prune regex size type user xdev)/' 'p/*/d/'
+complete {e,}grep 'c/--/(after-context before-context context count exclude file files-with-matches files-without-match fixed-strings include invert-match no-filename no-messages only-matching perl-regexp recursive with-filename)/'
+complete kill 'c/%/j/' 'c/-/S/' #'c/-/S/' 'p/1/(-)/'
+complete killall 'c/-/S/' 'p/1/(-)/'
+#complex completion for ln (http://hea-www.harvard.edu/~fine/Tech/tcsh.html)
+#in all cases, if you start typing, it completes with a filename
+#but if you complete without typing anything you get this:
+# first argument: adds "-s"
+# arguments that follow -s: reminds you of which argument is expected
+#complete ln 'C/?/f/' 'p/1/(-s)/' 'n/-s/x:[first arg is path to original file]/' 'N/-s/x:[second arg is new link]/'
+complete ln 'C/?/f/' 'p/1/(-s)/'
+complete {man,sudo,whereis,which} 'p/1/c/'
+complete su 'c/-/(m)/' 'p/*/u/'
+complete tcpdump 'n@-i@`ifconfig -l`@'
+complete wget 'c/--/(background debug verbose non-verbose output-document timestamping no-host-directories recursive)/'
+complete uncomplete 'p/*/X/'
+
+set svnprops=(svn:executable svn:externals svn:ignore svn:keywords svn:mime-type)
+set mylists=Repos/shell/lists
+if (-r $mylists) then
+  # completion sets using personal lists
+  set myhosts=(`cat -s $mylists/hosts.txt`)
+  set myusers=(`cat -s $mylists/users.txt`)
+  set cvsroots=(`cat -s $mylists/cvsroots.txt`)
+  set cvspaths=(`cat -s $mylists/cvspaths.txt`)
+  set svnurls=(`cat -s $mylists/svnurls.txt`)
+  complete chown 'c/--/(changes silent quiet verbose reference recursive help version)/' 'c/*:/$myusers//' 'p/1/$myusers/:' 'p/*/f/'
+  complete cvs 'n/-s/(CVS_RSH=ssh CVSEDITOR= USER=)/' 'n/-d/$cvsroots/' 'n/get/$cvspaths/' 'n/export/$cvspaths/' 'n/add/f/' 'n/commit/f/' 'n/diff/f/' 'n/import/f/' 'n/log/f/' 'n/status/f/' 'n/update/f/' 'n/-nq/(update)/' 'n/watch/(add remove)/' 'p/1/(add commit diff export get history import log login rm rtag status tag update watch watchers)/'
+  complete {host,nslookup,ping,route} 'p/*/$myhosts/'
+  complete rsync 'c/*@/$myhosts//' 'c/--/(checksum copy-links cvs-exclude delete delete-excluded dry-run exclude-from= exclude= ignore-times include-from= include= modify-window= progress quiet recursive rsh=ssh safe-links size-only times update verbose)/' 'p/*/f/'
+  # complete scp 'c/*@/$myhosts//' 'p/*/f/'
+  # From Michael Schroeder <mlschroe@immd4.informatik.uni-erlangen.de> 
+  # This one will ssh to the file to fetch the list of files!
+  complete scp 'c%*@*:%`set q=$:-0;set q="$q:s/@/ /";set q="$q:s/:/ /";set q=($q " ");ssh $q[2] -l $q[1] ls -dp $q[3]\*`%' 'c%*:%`set q=$:-0;set q="$q:s/:/ /";set q=($q " ");ssh $q[1] ls -dp $q[2]\*`%' 'c%*@%$myhosts%:' 'C@[./$~]*@f@' 'n/*/$myhosts/:'
+  complete ssh 'c/*@/$myhosts//' 'p/*/$myusers/@'
+	complete svn 'p/1/(add blame cat checkout cleanup commit copy delete diff export help import info list lock log merge mkdir move propdel propedit propget proplist propset resolved revert status switch unlock update)//' 'n/checkout/$svnurls/' 'n/list/$svnurls/' 'n/propdel/$svnprops//' 'n/propedit/$svnprops//' 'n/propget/$svnprops//' 'n/proplist/$svnprops//' 'n/propset/$svnprops//'
+else
+  complete cvs 'n/-s/(CVS_RSH=ssh CVSEDITOR= USER=)//' 'n/add/f/' 'n/commit/f/' 'n/diff/f/' 'n/import/f/' 'n/log/f/' 'n/status/f/' 'n/update/f/' 'n/-nq/(update)/' 'n/watch/(add remove)/' 'p/1/(add commit diff export get history import log login rm rtag status tag update watch watchers)/'
+  complete chown 'c/--/(changes silent quiet verbose reference recursive help version)/' 'p/*/f/'
+  complete rsync 'c/--/(checksum copy-links cvs-exclude delete delete-excluded exclude-from= exclude= ignore-times include-from= include= modify-window= progress quiet recursive rsh=ssh safe-links size-only times update verbose)/' 'p/*/f/'
+	complete svn 'p/1/(add blame cat checkout cleanup commit copy delete diff export help import info list lock log merge mkdir move propdel propedit propget proplist propset resolved revert status switch unlock update)//' 'n/propdel/$svnprops//' 'n/propedit/$svnprops//' 'n/propget/$svnprops//' 'n/proplist/$svnprops//' 'n/propset/$svnprops//'
+endif
+
+# keys
+bindkey "^I" complete-word-fwd
+bindkey -k down history-search-forward
+bindkey -k up history-search-backward
+bindkey ^w delete-word # ctrl-w - fwd delete word
+bindkey "^[[3~" delete-char  # fwd del key - fwd delete
+
+# completions, corrections
+set implicitcd
+set correct = cmd # all | cmd | complete
+set complete = enhance
+
+# ~/.history contains line: history -S
+set history = 10000
+set savehist = (10000 merge)
+set histdup = 'prev'  # 'prev' no immediate dupes; 'all' no dupes in history
+
+# ls
+set listflags = 'hx'
+set listlinks
+
+# watch for local logins
+set watch = ( 1 any any )
+set who = '%B%n%b %a %l from host %B%M%b at %t'
+
+# don't logout
+set autologout = 0
+
+# feedback
+set notify
+set noding
+
+# prompt, xterm title
+switch ($TERM)
+  case "xterm*":
+    set prompt = '%{\033]0;%n@%m:%~\007%}%T%n%# '
+    # \!# chokes on shell meta chars (redir stderr to /dev/null?)
+    # \!#:0 first word of curr cmd
+    sched +0:00 alias postcmd 'printf "\033]0;`hostname -s`:\!#:0\007"'
+    breaksw
+  default:
+    set prompt = '%T%n@%m:%c2%# '
+    breaksw
+endsw
+
+endif
+# see also some cool stuff in /usr/share/tcsh/examples/tcsh.defaults
+onintr # ignore interrupts

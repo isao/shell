@@ -1,0 +1,36 @@
+#adt
+setenv CVSROOT :pserver:iyagi@cvs.adt.adprofile.net:/home/cvsroot
+complete cvsrevlist.pl 'c/--/(filter tag quiet)/'
+
+if (-d ~/Sites) then
+	setenv TAN_CVS_PATHS `cvs -q get -p catools/tan_cvs_paths.txt`
+endif
+
+if (-d /root/bin) then
+	set path=(/root/bin $path)
+endif
+
+#/usr/local/apache/lib/perl/
+setenv PERL5LIB '/usr/local/apache/lib/perl'
+setenv JAVA_HOME '/usr/local/java'
+
+#verisign
+if (-d /etc/ssl/certs) then
+	setenv PFPRO_CERT_PATH '/etc/ssl/certs'
+endif
+
+if (-d /opt/oracle) then
+	#adt oracle
+	setenv ORACLE_BASE '/opt/oracle'
+	setenv ORACLE_HOME '/opt/oracle/product/9.2.0'
+	setenv LD_LIBRARY_PATH "$ORACLE_HOME/lib:/lib:/usr/lib:/usr/local/lib"
+	setenv NLS_DATE_FORMAT 'YYYY-MM-DD HH24:MI:SS'
+	setenv NLS_LANG 'AMERICAN_AMERICA.WE8ISO8859P1'
+	setenv NLS_TIMESTAMP_FORMAT 'YYYY-MM-DD HH24:MI:SS'
+	setenv NLS_TIMESTAMP_TZ_FORMAT 'YYYY-MM-DD HH24:MI:SS.FF6TZH'
+	setenv ORA_NLS33 "$ORACLE_HOME/ocommon/nls/admin/data"
+	setenv ORACLE_SID 'jmadev'
+	setenv ORACLE_TERM 'xterm'
+	setenv ORACLE_USERID 'oltp_owner_qa'
+	set path=($ORACLE_HOME/bin $path)
+endif
