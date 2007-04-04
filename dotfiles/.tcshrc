@@ -18,7 +18,7 @@ setenv CVSROOT :ext:isao@etherwerks.com:/home/isao/cvs
 setenv CVSEDITOR $EDITOR
 setenv CVSIGNORE '.DS_Store,._?*,.FBC*,.#?*'
 setenv SVN_EDITOR $EDITOR
-setenv LESS --tabs=2
+setenv LESS '--tabs=2 --LONG-PROMPT --ignore-case'
 setenv RSYNC_RSH ssh
 setenv VISUAL $EDITOR
 
@@ -76,6 +76,7 @@ complete killall 'c/-/S/' 'p/1/(-)/'
 #complete ln 'C/?/f/' 'p/1/(-s)/' 'n/-s/x:[first arg is path to original file]/' 'N/-s/x:[second arg is new link]/'
 complete ln 'C/?/f/' 'p/1/(-s)/'
 complete {man,sudo,whereis,which} 'p/1/c/'
+complete nano 'c/--/(autoindent backup help nowrap)/'
 complete su 'c/-/(m)/' 'p/*/u/'
 complete tcpdump 'n@-i@`ifconfig -l`@'
 complete wget 'c/--/(background debug verbose non-verbose output-document timestamping no-host-directories recursive)/'
