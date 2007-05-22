@@ -1,7 +1,6 @@
 # podshow paths
 # set path=(/opt/local/{,s}bin /usr/local/{,mysql/,php5/,s}bin /usr/{,s}bin /{s,}bin)
-# 
-# ~/bin
+#
 # /opt/local/bin
 # /opt/local/sbin
 # /usr/local/bin
@@ -15,3 +14,8 @@
 if (-r $HOME/bin ) then
 	setenv PATH $PATH:$HOME/bin
 endif
+
+# if ( -x /opt/local/bin/memcached -a -z `ps auxw | grep -v grep | grep memcached | head -1` ) then
+# 	echo 'launching memcached'
+# 	/opt/local/bin/memcached -d -m 128 -l 127.0.0.1 -p 11211
+# endif
