@@ -1,0 +1,17 @@
+# podshow paths
+# set path=(/opt/local/{,s}bin /usr/local/{,mysql/,php5/,s}bin /usr/{,s}bin /{s,}bin)
+# 
+# ~/bin
+# /opt/local/bin
+# /opt/local/sbin
+# /usr/local/bin
+# /usr/local/mysql/bin
+# /usr/local/php5/bin
+# /usr/local/sbin
+# /usr/bin
+# /usr/sbin
+# /sbin
+# /bin
+if (-r $HOME/bin ) then
+	setenv PATH $PATH:$HOME/bin
+endif
