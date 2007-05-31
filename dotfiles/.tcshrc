@@ -1,15 +1,17 @@
 onintr -  # ignore interrupts
 
 # path
-#/opt/local/bin        macports
-#/usr/local/bin        my scripts
-#/usr/local/mysql/bin  mysql.com
-#/usr/local/php5/bin   entropy.ch
-#/usr/bin
+#/opt/local/bin
+#/opt/local/sbin
+#/usr/local/bin
+#/usr/local/sbin
+#/usr/local/mysql/bin
+#/usr/local/php5/bin
 #/usr/sbin
+#/usr/bin
 #/sbin
 #/bin
-set path=(/opt/local/{,s}bin /usr/local/{,mysql/,php5/,s}bin /usr/{,s}bin /{s,}bin)
+set path=(/opt/local/{,s}bin /usr/local/{,s,mysql/,php5/}bin /{usr/,}{s,}bin)
 
 # app env vars
 setenv EDITOR `which bbedit-w.sh nano edit jpico pico|grep '^/'|head -1`
@@ -60,6 +62,7 @@ alias lsd '/bin/ls -l \!* | grep ^d'  # ls dirs only
 alias ls. '/bin/ls -dF .?*'  # ls dot files & dirs only
 alias man2txt 'man \!* | col -b > "man_\!*.txt"'
 alias dict "curl -s 'dict://dict.org/d:\!*' | egrep -v '^[0-9]{3} .*|^\.'"
+alias showpath 'echo $PATH | tr : "\n"'
 alias word 'grep \!* /usr/share/dict/words' # Grep thru dictionary
 alias rmmacmeta "find \!* \( -name '.DS_Store' -or -name '._*' \) -exec rm -v \{\} \;"
 alias rot13 'perl -wne "tr/a-zA-Z/n-za-mN-ZA-M/;print;"'
