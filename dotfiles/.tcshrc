@@ -23,9 +23,16 @@ setenv RSYNC_RSH ssh
 setenv VISUAL $EDITOR
 
 # work stuff
-if (-r ./.tcshrc-podshow ) then
-  source ./.tcshrc-podshow
+if (-r $HOME/bin) then
+	setenv PATH $PATH:$HOME/bin
 endif
+if (-x /opt/local/bin/memcached) then
+	ps auxw | grep -v grep | grep memcached > /dev/null
+	if ($?) then
+		/opt/local/bin/memcached -d -m 128 -l 127.0.0.1 -p 11211
+	endif
+endif
+
 
 # skip the rest if non-interactive shell
 if ($?prompt && $?TERM) then
