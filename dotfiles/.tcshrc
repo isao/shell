@@ -100,12 +100,12 @@ if (-r $mylists) then
   # This one will ssh to the file to fetch the list of files!
   complete scp 'c%*@*:%`set q=$:-0;set q="$q:s/@/ /";set q="$q:s/:/ /";set q=($q " ");ssh $q[2] -l $q[1] ls -dp $q[3]\*`%' 'c%*:%`set q=$:-0;set q="$q:s/:/ /";set q=($q " ");ssh $q[1] ls -dp $q[2]\*`%' 'c%*@%$myhosts%:' 'C@[./$~]*@f@' 'n/*/$myhosts/:'
   complete ssh 'c/*@/$myhosts//' 'p/*/$myusers/@'
-	complete svn 'p/1/(add blame cat checkout cleanup commit copy delete diff export help import info list lock log merge mkdir move propdel propedit propget proplist propset resolved revert status switch unlock update)//' 'n/checkout/$svnurls/' 'n/list/$svnurls/' 'n/propdel/$svnprops//' 'n/propedit/$svnprops//' 'n/propget/$svnprops//' 'n/proplist/$svnprops//' 'n/propset/$svnprops//'
+  complete svn 'p/1/(add blame cat checkout cleanup commit copy delete diff export help import info list lock log merge mkdir move propdel propedit propget proplist propset resolved revert status switch unlock update)//' 'n/checkout/$svnurls/' 'n/list/$svnurls/' 'n/propdel/$svnprops//' 'n/propedit/$svnprops//' 'n/propget/$svnprops//' 'n/proplist/$svnprops//' 'n/propset/$svnprops//' 'c/--/(quiet verbose username password)/' 'n/log/(--stop-on-copy)/'
 else
   complete cvs 'n/-s/(CVS_RSH=ssh CVSEDITOR= USER=)//' 'n/add/f/' 'n/commit/f/' 'n/diff/f/' 'n/import/f/' 'n/log/f/' 'n/status/f/' 'n/update/f/' 'n/-nq/(update)/' 'n/watch/(add remove)/' 'p/1/(add commit diff export get history import log login rm rtag status tag update watch watchers)/'
   complete chown 'c/--/(changes silent quiet verbose reference recursive help version)/' 'p/*/f/'
   complete rsync 'c/--/(checksum copy-links cvs-exclude delete delete-excluded exclude-from= exclude= ignore-times include-from= include= modify-window= progress quiet recursive rsh=ssh safe-links size-only times update verbose)/' 'p/*/f/'
-	complete svn 'p/1/(add blame cat checkout cleanup commit copy delete diff export help import info list lock log merge mkdir move propdel propedit propget proplist propset resolved revert status switch unlock update)//' 'n/propdel/$svnprops//' 'n/propedit/$svnprops//' 'n/propget/$svnprops//' 'n/proplist/$svnprops//' 'n/propset/$svnprops//'
+  complete svn 'p/1/(add blame cat checkout cleanup commit copy delete diff export help import info list lock log merge mkdir move propdel propedit propget proplist propset resolved revert status switch unlock update)//' 'n/propdel/$svnprops//' 'n/propedit/$svnprops//' 'n/propget/$svnprops//' 'n/proplist/$svnprops//' 'n/propset/$svnprops//' 'c/--/(quiet verbose username password)/' 'n/log/(--stop-on-copy)/'
 endif
 
 # keys
