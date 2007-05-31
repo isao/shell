@@ -29,6 +29,7 @@ endif
 if (-x /opt/local/bin/memcached) then
 	ps auxw | grep -v grep | grep memcached > /dev/null
 	if ($?) then
+		logger "launched memcached from $0"
 		/opt/local/bin/memcached -d -m 128 -l 127.0.0.1 -p 11211
 	endif
 endif
