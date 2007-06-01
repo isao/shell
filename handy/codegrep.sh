@@ -12,6 +12,18 @@
 #ie- display inverted match with
 #  % codegrep.sh --invert-match <pattern>
 
+usage()
+{
+	cat <<MSG >&2
+usage: `basename $0` [egrep parameters] <pattern>
+greps certain files from cwd, using supplied <pattern>
+put optional parameters to grep before <pattern>
+MSG
+	exit 1
+}
+
+[ -z $1 ] && usage
+
 find -E . -type f \
   -not -path '*/.svn/*' \
   -not -path '*/cache/*' \
