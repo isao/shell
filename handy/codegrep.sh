@@ -12,8 +12,8 @@ usage()
 {
 	cat <<MSG >&2
 usage: `basename $0` [egrep parameters] <pattern>
-greps certain files from cwd, using supplied <pattern>
-put optional parameters to grep before <pattern>
+egreps only certain files from cwd, using supplied <pattern>
+put optional parameters to egrep before <pattern>
 MSG
 	exit 1
 }
