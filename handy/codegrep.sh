@@ -10,7 +10,7 @@
 #  % codegrep.sh --files-with-matches <pattern>
 #
 #ie- display inverted match with
-#  % codegrep.sh -v <pattern>
+#  % codegrep.sh --invert-match <pattern>
 
 find -E . -type f \
   -not -path '*/.svn/*' \
