@@ -1,8 +1,7 @@
-svn.pdnfun.info
-dev.pdnfun.info
-dev2.pdnfun.info
-pdndev.pdnfun.info
+dev.ydn.corp.yahoo.com
 etherjar.com
 etherwerks.com
+filo.yahoo.com
+knox.corp.yahoo.com
+preparemoon.corp.yahoo.com
 shell.sf.net
-
