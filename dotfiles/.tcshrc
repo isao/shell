@@ -119,14 +119,27 @@ set implicitcd
 set correct = cmd
 set complete = enhance
 
-#keep separate histories for my *nix boxes w/ home dir nfs mounted
-if($OSTYPE != 'darwin') set histfile = ~/.history-$HOST
-
 # ~/.history contains line: history -S
 # histdup 'prev' no immediate dupes; 'all' no dupes in history
 set history = 1000
 set savehist = (1000 merge)
 set histdup = 'prev'
+
+#set yroo name if applicable
+if(! $?YROOT_NAME && -l /.yroot) then
+	set YROOT_NAME=`readlink /.yroot`
+	set YROOT_NAME=`basename $YROOT_NAME`
+endif
+
+#keep separate histories for my *nix boxes & yroots
+#because they share a single home dir nfs mounted
+if($OSTYPE != 'darwin') then
+	if($?YROOT_NAME) then
+		set histfile = ~/.history-$HOST-$YROOT_NAME
+	else
+		set histfile = ~/.history-$HOST
+	endif
+endif
 
 # ls
 set listflags = 'hx'
@@ -146,10 +159,6 @@ set noding
 set ellipsis
 
 # prompt, xterm title
-if(! $?YROOT_NAME && -l /.yroot) then
-	set YROOT_NAME=`readlink /.yroot`
-	set YROOT_NAME=`basename $YROOT_NAME`
-endif
 switch ($TERM)
   case "xterm*":
 
