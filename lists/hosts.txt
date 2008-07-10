@@ -1,3 +1,8 @@
+alpha.ydn.corp.sk1.yahoo.com
+com1.devnet.scd.yahoo.com
+com2.devnet.scd.yahoo.com
+com3.devnet.re3.yahoo.com
+com4.devnet.re3.yahoo.com
 dev.ydn.corp.yahoo.com
 etherjar.com
 etherwerks.com
