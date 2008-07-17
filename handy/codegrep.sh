@@ -1,27 +1,17 @@
 #!/bin/sh
-#ie- display files and line with matching pattern
-#  % codegrep.sh <pattern>
-#
-#ie- display only filenames with
-#  % codegrep.sh --files-with-matches <pattern>
-#
-#ie- display inverted match with
-#  % codegrep.sh --invert-match <pattern>
 
 usage()
 {
 	cat <<MSG >&2
-usage: `basename $0` [egrep parameters] <pattern>
-egreps only certain files from cwd, using supplied <pattern>
-put optional parameters to egrep before <pattern>
+Usage: `basename $0` [egrep parameters] <pattern>
+Desription: egreps files for <pattern> recursively from cwd, skipping cvs/svn dirs and image files. Tip: put optional parameters to egrep before <pattern>.
+Example: `basename $0` --invert-match 'foo.+bar'
 MSG
 	exit 1
 }
 
 [ -z $1 ] && usage
 
-find -E . -type f \
-  -not -path '*/.svn/*' \
-  -not -path '*/cache/*' \
-  -not -iregex '^.*\.(txt|swp|gif|jpg|png|pdf|swf|flv|mp3)$' \
+find . \( -type d \( -name .svn -or -name CVS \) \) -prune -or \
+  -type f -not \( -name '*.gif' -name '*.jpg' -name '*.jpeg' -name '*.png' \) \
   -exec egrep --with-filename --line-number --no-messages $@ '{}' \;
