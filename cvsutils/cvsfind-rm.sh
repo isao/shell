@@ -12,6 +12,4 @@ fi
 echo 'removing files from cvs'
 find $f \
   -type f -not -path '*/CVS/*' \
-  -exec rm -v \{\} \; \
-  -exec cvs rm \{\} \; \
-  -exec cvs ci -m 'delete' \{\} \;
+  -exec cvs rm -f \{\} \;

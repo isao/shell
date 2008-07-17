@@ -9,5 +9,4 @@ fi
 
 find $f \
   -type f -not -path '*/CVS/*' \
-  -exec cvs add \{\} \; \
-  -exec cvs ci -m 'adding' \{\} \;
+  -exec cvs add \{\} \;
