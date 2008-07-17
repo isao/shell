@@ -10,3 +10,5 @@ filo.yahoo.com
 knox.corp.yahoo.com
 preparemoon.corp.yahoo.com
 shell.sf.net
+ws1.inf.scd.yahoo.com
+ydn.corp.yahoo.com
