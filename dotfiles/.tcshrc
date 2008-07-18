@@ -4,7 +4,11 @@
 #
 # env vars
 #
-set path=(/opt/local/{,s}bin /usr/local/{,mysql/}bin /{,s}bin /usr/{,s}bin)
+if(-d /home/y/bin) then
+	set path=(/home/y/bin /{,s}bin /usr/{,local/}{,s}bin)
+else
+	set path=(/opt/local/{,s}bin /usr/local/{,mysql/}bin /{,s}bin /usr/{,s}bin)
+endif
 setenv EDITOR `which bbedit-w.sh nano pico edit vim vi | grep '^/' | head -1`
 setenv CVSEDITOR $EDITOR
 setenv SVN_EDITOR $EDITOR
