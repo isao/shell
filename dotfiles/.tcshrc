@@ -159,7 +159,6 @@ endif
 #keep separate histories for my *nix boxes & yroots
 #because they share a single home dir nfs mounted
 if($OSTYPE != 'darwin') then
-	set path=(/home/y/bin $path)
 	if($?YROOT_NAME) then
 		set histfile = ~/.history-$HOST-$YROOT_NAME
 	else
