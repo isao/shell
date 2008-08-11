@@ -8,6 +8,7 @@ if(-d /home/y/bin) then
 	set path=(/home/y/bin /{,s}bin /usr/{,local/}{,s}bin)
 else
 	set path=(/opt/local/{,s}bin /usr/local/{,mysql/}bin /{,s}bin /usr/{,s}bin)
+	setenv MANPATH ${MANPATH}:/opt/local/share/man
 endif
 setenv EDITOR `which bbedit-w.sh nano pico edit vim vi | grep '^/' | head -1`
 setenv CVSEDITOR $EDITOR
