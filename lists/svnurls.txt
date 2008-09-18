@@ -1,3 +1,2 @@
-svn+ssh://svn.pdnfun.info/svn/podshow/trunk
-http://etherjar.com/svn/trunk
-https://smacs.googlecode.com/svn/trunk
+http://etherjar.com/svn/
+https://smacs.googlecode.com/svn/
