@@ -173,7 +173,7 @@ switch ($TERM)
 
 		##Y!
 		if($?YROOT_NAME) then
-			set prompt = "%{\033]0;%n@${YROOT_NAME}:%c03\007%}%T%n@%B${YROOT_NAME}%b%# %L"
+			set prompt = "%{\033]0;%n@%m,${YROOT_NAME}:%c03\007%}%T%n@%B${YROOT_NAME}%b%# %L"
 			sched +0:00 alias postcmd 'printf "\033]0;%s %s\007" $YROOT_NAME "\!#"'
 
 		else
