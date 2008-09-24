@@ -89,7 +89,7 @@ if(-X yvm) complete yvm 'c/--/(config console create list pmadd pmlist pmremove 
 if(-r Repos/shell/lists || -r repos/shell/lists) then
   # completion sets using personal lists
 	set mylists=[rR]epos/shell/lists
-  set myhosts=(`cat -s $mylists/hosts.txt; test -r ~/.ssh/known_hosts && egrep -o '^[^, ]+' ~/.ssh/known_hosts`)
+  set myhosts=(`cat -s $mylists/hosts.txt`)
   set myusers=(`cat -s $mylists/users.txt`)
   set cvsroots=(`cat -s $mylists/cvsroots.txt`)
   set cvspaths=(`cat -s $mylists/cvspaths.txt`)
