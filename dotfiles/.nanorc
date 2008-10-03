@@ -1,4 +1,4 @@
-set autoindent
+#set autoindent
 set historylog
 set nowrap
 set regexp
