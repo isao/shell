@@ -1,0 +1,1 @@
+DATE_FORMAT(date,'%Y-%m-%d %h:%I'),	-- YYYY-NN-DD hh:mm

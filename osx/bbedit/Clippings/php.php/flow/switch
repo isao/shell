@@ -1,0 +1,9 @@
+#indent#
+switch(#insertion#)
+{
+  case '':
+    break;
+
+  default:
+    break;
+}

@@ -1,0 +1,51 @@
+// ADDING ARRAYS
+$a1 = array ('a'=>1, 'b'=>2, 'c'=>3);
+$a2 = array ('d'=>4);
+
+print_r ($a1 +$a2);	 // same as $a1+=$a2
+
+/*
+Array
+(
+    [a] => 1
+    [b] => 2
+    [c] => 3
+    [d] => 4
+)
+*/
+
+$a1+=$a2; print_r ($a1); /*  
+Array
+(
+    [a] => 1
+    [b] => 2
+    [c] => 3
+    [d] => 4
+)
+*/
+
+require_once ('../shared/class.connect.php');
+$dbh = new connection ();
+
+
+
+web refs:
+	$_SERVER['PHP_SELF']:          /ffarm/pad.php
+	$_SERVER['SCRIPT_NAME']:       /ffarm/pad.php
+
+filenames:
+ basename($_SERVER['SCRIPT_NAME']):         pad.php
+ basename($_SERVER['SCRIPT_NAME'],'.php'):  pad
+
+directories:
+ dirname($_SERVER['SCRIPT_NAME']):         /ffarm
+ dirname($_SERVER['SCRIPT_FILENAME']):     /Users/isao/Sites/ffarm
+
+filesystem refs:
+	$_SERVER['DOCUMENT_ROOT']:     /Users/isao/Sites/
+	$_SERVER['SCRIPT_FILENAME']:   /Users/isao/Sites/ffarm/pad.php
+	$_SERVER['PATH_TRANSLATED']:   /Users/isao/Sites/ffarm/pad.php
+
+host info:
+	$_SERVER['SERVER_NAME']:       ether.local
+	$_SERVER['HTTP_HOST']:         lap

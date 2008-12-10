@@ -1,0 +1,5 @@
+//GET HAS AT LEAST EXPECTED KEYS, MAYBE MORE
+$keys = array ('serialnumber', 'name', 'version');	// expected $_GET keys
+if ($keys != array_intersect ($keys, array_keys ($_GET)) {
+	print 'parameters missing';
+}

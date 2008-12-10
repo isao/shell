@@ -1,0 +1,5 @@
+#indent#
+private function #selstart##select##selend#()
+{
+  
+}

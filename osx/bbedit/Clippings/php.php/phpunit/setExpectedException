@@ -1,0 +1,1 @@
+﻿$this->setExpectedException(#selstart#'Exception'#selend#);

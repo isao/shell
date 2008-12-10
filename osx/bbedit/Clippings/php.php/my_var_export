@@ -1,0 +1,1 @@
+﻿function my_var_export($any) {	return preg_replace('/=>\s+array \(/', '=> array(', var_export($any, 1));}

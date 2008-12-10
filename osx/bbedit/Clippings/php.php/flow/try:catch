@@ -1,0 +1,6 @@
+#indent#
+try {
+	#selstart##selection##selend#
+} catch(Exception $e) {
+	
+}

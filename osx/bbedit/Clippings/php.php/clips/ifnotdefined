@@ -1,0 +1,2 @@
+#indent#
+if(!defined('#select#')) define('#select#');

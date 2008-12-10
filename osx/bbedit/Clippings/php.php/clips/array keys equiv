@@ -1,0 +1,5 @@
+//GET CONTAINS EXPECTED KEYS EXACTLY
+$keys = array ('serialnumber', 'name', 'version');	// expected $_GET keys
+if (sizeof (array_diff ($keys, array_keys ($_GET))) > 0) {
+	print 'parameters missing';
+}

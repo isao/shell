@@ -1,0 +1,13 @@
+#indent#
+/**
+ * #BASENAME#
+ *
+ */
+class #selstart##BASENAME##selend#
+{
+
+	public function __construct()
+	{
+		
+	}
+}
