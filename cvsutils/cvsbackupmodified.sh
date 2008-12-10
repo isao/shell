@@ -11,4 +11,4 @@ else
 fi
 
 cvs -nq update $f |\
-	perl -ne 's/^M (.+)$/mv -i $1 $1~/ && print && qx/$_/;'
+	perl -ne 's/^M (.+)$/mv -iv $1 $1~/ && print && qx/$_;/;'

@@ -7,7 +7,7 @@
 if(-d /home/y/bin) then
 	set path=(/home/y/bin /{,s}bin /usr/{,local/}{,s}bin)
 else
-	set path=(/opt/local/{,s}bin /usr/local/{,mysql/}bin /{,s}bin /usr/{,s}bin)
+	set path=(/opt/local/{,s}bin /usr/local/{,git,mysql/}bin /{,s}bin /usr/{,s}bin)
 	setenv MANPATH ${MANPATH}:/opt/local/share/man
 endif
 setenv EDITOR `which bbedit-w.sh nano pico edit vim vi | grep '^/' | head -1`
@@ -131,8 +131,8 @@ set complete = enhance
 
 # ~/.history contains line: history -S
 # histdup 'prev' no immediate dupes; 'all' no dupes in history
-set history = 1000
-set savehist = (1000 merge)
+set history = 10000
+set savehist = (10000 merge)
 set histdup = 'prev'
 
 # ls
