@@ -4,18 +4,15 @@
 #
 # env vars
 #
-if(-d /home/y/bin) then
-	set path=(/home/y/bin /{,s}bin /usr/{,local/}{,s}bin)
-else
-	set path=(/opt/local/{,s}bin /usr/local/{,git,mysql/}bin /{,s}bin /usr/{,s}bin)
-	setenv MANPATH ${MANPATH}:/opt/local/share/man
-endif
+set path=(/opt/local/{,s,apache2/}bin /usr/local/bin /{,s}bin /usr/{,s}bin)
+setenv MANPATH ${MANPATH}:/opt/local/share/man
+
 setenv EDITOR `which bbedit-w.sh nano pico edit vim vi | grep '^/' | head -1`
 setenv CVSEDITOR $EDITOR
 setenv SVN_EDITOR $EDITOR
 setenv VISUAL $EDITOR
 setenv CVSROOT vault.yahoo.com:/CVSROOT
-setenv CVS_RSH `which yssh ssh |grep '^/' |head -1`
+setenv CVS_RSH ssh
 setenv CVSIGNORE '.DS_Store,._?*,.FBC*,.#?*'
 setenv GREP_OPTIONS '--binary-files=without-match'
 setenv LESS '--tabs=2 --LONG-PROMPT --ignore-case'
@@ -51,11 +48,6 @@ alias word 'grep \!* /usr/share/dict/words'
 alias rmmacmeta "find \!* \( -name '.DS_Store' -or -name '._*' \) -exec rm -v \{\} \;"
 alias rot13 'perl -wne "tr/a-zA-Z/n-za-mN-ZA-M/;print;"'
 
-if(-X yssh) then
-	alias ssh yssh
-	alias scp yscp
-endif
-
 #
 # built-in completions
 #
@@ -82,10 +74,6 @@ complete uncomplete 'p/*/X/'
 if(-X bbedit) complete bbedit 'c/--/(background clean create front-window new-window print pipe-title worksheet view-top resume wait)/'
 if(-X nano) complete nano 'c/--/(autoindent backup help nowrap)/'
 if(-X port) complete port 'p/*/(search info variants deps dependents install uninstall activate deactivate installed location contents provides sync outdated upgrade clean echo list version selfupdate help)/' 'N/port/(all current active inactive installed uninstalled outdated)/'
-if(-X yinst) complete yinst 'p/1/(activate changed check check-config clean clone collect create crontab cvsunzip deactivate diff env fetch help history install lock ls man packages platform range reload remove repair restart restore save self-install self-update set ssh start stop tag unlock unset version which-dist)/' 'n/ls/(-all -build -Buildtime -comment -config -custodian -dependencies -description -files -dirs -Flags -install_info -leaf -link -nocollection -noname -noversion -prefix -sys -time -yicf)/' 'n/install/(-branch -collection -downgrade -dryrun -force -live -noactivate -nocheck_data -noexecute -nonewer_build -noprerequisites -norepair_data -nostart -noupgrade -refresh -refresh_branch -refresh_collection -refresh_same_branch -replace -same -set -use_restart)/' 'n/-branch/(current stable test)/' 'p/*/f:*.tgz/'
-if(-X yinst_create) complete yinst_create 'c/--/(buildtype platform stage_dir target_dir clean dumpyicf keyed debug help)//' 'n/--buildtype/(release test link nightly)/' 'p/*/f:*.yicf/'
-if(-X yroot) complete yroot 'c/--/(create dryrun images list local-home mount ps remove rename restart set setup-amd start stop umount unset update verbose)/' 'n/--list/(--status)/' 'p@*@D:/home/y/var/yroots@@'
-if(-X yvm) complete yvm 'c/--/(config console create list pmadd pmlist pmremove remove rename restart start stop suspend)/' 'n/--list/(--status)/' 'p@2@D:/home/y/var/yvm@@'
 
 #
 # completions using optional external lists
@@ -105,8 +93,8 @@ if(-r Repos/shell/lists || -r repos/shell/lists) then
   # complete scp 'c/*@/$myhosts//' 'p/*/f/'
   # From Michael Schroeder <mlschroe@immd4.informatik.uni-erlangen.de> 
   # This one will ssh to the file to fetch the list of files!
-  complete {scp,yscp} 'c%*@*:%`set q=$:-0;set q="$q:s/@/ /";set q="$q:s/:/ /";set q=($q " ");$CVS_RSH $q[2] -l $q[1] ls -dp $q[3]\*`%' 'c%*:%`set q=$:-0;set q="$q:s/:/ /";set q=($q " ");$CVS_RSH $q[1] ls -dp $q[2]\*`%' 'c%*@%$myhosts%:' 'C@[./$~]*@f@' 'n/*/$myhosts/:'
-  complete {ssh,yssh} 'c/*@/$myhosts//' 'p/*/$myusers/@'
+  complete scp 'c%*@*:%`set q=$:-0;set q="$q:s/@/ /";set q="$q:s/:/ /";set q=($q " ");$CVS_RSH $q[2] -l $q[1] ls -dp $q[3]\*`%' 'c%*:%`set q=$:-0;set q="$q:s/:/ /";set q=($q " ");$CVS_RSH $q[1] ls -dp $q[2]\*`%' 'c%*@%$myhosts%:' 'C@[./$~]*@f@' 'n/*/$myhosts/:'
+  complete ssh 'c/*@/$myhosts//' 'p/*/$myusers/@'
 	if(-X sshfs) complete sshfs 'c/*@/$myhosts/:/' 'p/1/$myusers/@'
   complete svn 'p/1/(add blame cat checkout cleanup commit copy delete diff export help import info list lock log merge mkdir move propdel propedit propget proplist propset resolved revert status switch unlock update)//' 'n/prop{del,edit,get,list,set}/(svn:executable svn:externals svn:ignore svn:keywords svn:mime-type)//' 'c/--/(quiet verbose username password)/' 'n/log/(--stop-on-copy)/' 'n/{checkout,list}/$svnurls/'
 else
@@ -152,50 +140,23 @@ set notify
 set noding
 set ellipsis
 
-
-##Y!
-#set yroot name if applicable
-if(! $?YROOT_NAME && -l /.yroot) then
-	set YROOT_NAME=`readlink /.yroot`
-	set YROOT_NAME=`basename $YROOT_NAME`
-endif
-
-##Y!
-#keep separate histories for my *nix boxes & yroots
-#because they share a single home dir nfs mounted
-if($OSTYPE != 'darwin') then
-	if($?YROOT_NAME) then
-		set histfile = ~/.history-$HOST-$YROOT_NAME
-	else
-		set histfile = ~/.history-$HOST
-	endif
-endif
-
 # prompt, xterm title
 switch ($TERM)
   case "xterm*":
 
-		##Y!
-		if($?YROOT_NAME) then
-			set prompt = "%{\033]0;%n@%m,${YROOT_NAME}:%c03\007%}%T%n@%B${YROOT_NAME}%b%# %L"
-			sched +0:00 alias postcmd 'printf "\033]0;%s %s\007" $YROOT_NAME "\!#"'
+		# %{string%}  includes string as a literal escape sequence
+		# %n          user name
+		# %m          short hostname
+		# %c3         last 3 dirs of cwd w/ ~ substitution
+		# %~          cwd w/ ~ substition
+		# %T          24-hour time
+		# %#          promptchars shell var; '#', '>', or '%', etc.
+		# %L          clear to eol or eop
+		# !#          history substution of current event
+		set prompt = '%{\033]0;%n@%m:%c03\007%}%T%n%# %L'
 
-		else
-			# %{string%}  includes string as a literal escape sequence
-			# %n          user name
-			# %m          short hostname
-			# %c3         last 3 dirs of cwd w/ ~ substitution
-			# %~          cwd w/ ~ substition
-			# %T          24-hour time
-			# %#          promptchars shell var; '#', '>', or '%', etc.
-			# %L          clear to eol or eop
-			# !#          history substution of current event
-			set prompt = '%{\033]0;%n@%m:%c03\007%}%T%n%# %L'
-
-			# put hostname and currently running command(s) in the term title bar
-			sched +0:00 alias postcmd 'printf "\033]0;%s %s\007" `hostname -s` "\!#"'
-		endif
-
+		# put hostname and currently running command(s) in the term title bar
+		sched +0:00 alias postcmd 'printf "\033]0;%s %s\007" `hostname -s` "\!#"'
     breaksw
 
   default:
