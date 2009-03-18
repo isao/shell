@@ -1,3 +1,6 @@
 etherjar.com
 etherwerks.com
+master
 shell.sf.net
+slave
+stage
