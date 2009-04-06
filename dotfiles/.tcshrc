@@ -101,7 +101,7 @@ else
   complete chown 'c/--/(changes silent quiet verbose reference recursive help version)/' 'p/*/f/'
   complete cvs 'n/-s/(CVS_RSH=ssh CVSEDITOR= USER=)//' 'n/add/f/' 'n/commit/f/' 'n/diff/f/' 'n/import/f/' 'n/log/f/' 'n/status/f/' 'n/update/f/' 'n/-nq/(update)/' 'n/watch/(add remove)/' 'p/1/(add commit diff export get history import log login rm rtag status tag update watch watchers)/'
   complete rsync 'c/--/(checksum copy-links cvs-exclude delete delete-excluded exclude-from= exclude= ignore-times include-from= include= modify-window= progress quiet recursive rsh=$CVS_RSH safe-links size-only times update verbose)/' 'p/*/f/'
-  complete svn 'p/1/(add blame cat checkout cleanup commit copy delete diff export help import info list lock log merge mkdir move propdel propedit propget proplist propset resolved revert status switch unlock update)//' 'n/prop{del,edit,get,list,set}/(svn:executable svn:externals svn:ignore svn:keywords svn:mime-type)//' 'c/--/(quiet verbose username password)/' 'n/log/(--stop-on-copy)/'
+  complete svn 'p/1/(add blame cat checkout cleanup commit copy delete diff export help import info list lock log merge mkdir move propdel propedit propget proplist propset resolved revert status switch unlock update)//' 'n/prop{del,edit,get,list,set}/(svn:executable svn:externals svn:ignore svn:keywords svn:mime-type)//' 'c/--/(quiet verbose username password)/'
 endif
 
 # keys
