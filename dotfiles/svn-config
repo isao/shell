@@ -74,7 +74,7 @@
 global-ignores = *.o *.lo *.la .*.rej *.rej .*~ *~ .DS_Store ._* Thumbs.db #*# .#*
 
 ### Set log-encoding to the default encoding for log messages
-log-encoding = latin1
+log-encoding = utf8
 ### Set use-commit-times to make checkout/update/switch/revert
 ### put last-committed timestamps on every file touched.
 use-commit-times = yes
