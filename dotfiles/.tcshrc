@@ -5,8 +5,7 @@
 # env vars
 #
 set path=(/opt/local/{,s,apache2/}bin /usr/local/bin /{,s}bin /usr/{,s}bin)
-if($?MANPATH && -d /opt/local) setenv MANPATH "$MANPATH:/opt/local/share/man"
-
+if($?MANPATH && -d /opt/local) setenv MANPATH "$MANPATH":/opt/local/share/man
 setenv EDITOR `which bbedit-w.sh nano pico edit vim vi | grep '^/' | head -1`
 setenv CVSEDITOR $EDITOR
 setenv SVN_EDITOR $EDITOR
