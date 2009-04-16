@@ -5,13 +5,13 @@
 # env vars
 #
 set path=(/opt/local/{,s,apache2/}bin /usr/local/bin /{,s}bin /usr/{,s}bin)
-if($?MANPATH) setenv MANPATH ${MANPATH}:/opt/local/share/man
+if($?MANPATH && -d /opt/local) setenv MANPATH "$MANPATH:/opt/local/share/man"
 
 setenv EDITOR `which bbedit-w.sh nano pico edit vim vi | grep '^/' | head -1`
 setenv CVSEDITOR $EDITOR
 setenv SVN_EDITOR $EDITOR
 setenv VISUAL $EDITOR
-setenv CVSROOT vault.yahoo.com:/CVSROOT
+#setenv CVSROOT vault.yahoo.com:/CVSROOT
 setenv CVS_RSH ssh
 setenv CVSIGNORE '.DS_Store,._?*,.FBC*,.#?*'
 setenv GREP_OPTIONS '--binary-files=without-match'
