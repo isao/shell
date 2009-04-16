@@ -151,15 +151,9 @@ switch ($TERM)
 		# %#          promptchars shell var; '#', '>', or '%', etc.
 		# %L          clear to eol or eop
 		# !#          history substution of current event
-		if(-l /_whereami) then
-			set prompt = '%{\033]0;%n@'`readlink /_whereami`':%c03\007%}%T%n%# %L'
-			# currently running command(s)
-			sched +0:00 alias postcmd 'printf "\033]0;%s %s\007" `readlink /_whereami` "\!#"'
-		else
-			set prompt = '%{\033]0;%n@%m:%c03\007%}%T%n%# %L'
-			# currently running command(s)
-			sched +0:00 alias postcmd 'printf "\033]0;%s %s\007" `hostname -s` "\!#"'
-		endif
+		set prompt = '%{\033]0;%n@%m:%c03\007%}%T%n%# %L'
+		# currently running command(s)
+		sched +0:00 alias postcmd 'printf "\033]0;%s %s\007" `hostname -s` "\!#"'
     breaksw
 
   default:
