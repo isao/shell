@@ -4,7 +4,7 @@
 #
 # env vars
 #
-set path=(/usr/local/bin /{,s}bin /usr/{,s}bin)
+set path=(/opt/local/{,s,apache2/}bin /usr/local/bin /{,s}bin /usr/{,s}bin)
 setenv EDITOR `which bbedit-w.sh nano pico edit vim vi | grep '^/' | head -1`
 setenv CVSEDITOR $EDITOR
 setenv SVN_EDITOR $EDITOR
@@ -45,6 +45,7 @@ alias showpath 'echo $PATH | tr : "\n"'
 alias word 'grep \!* /usr/share/dict/words'
 alias rmmacmeta "find \!* \( -name '.DS_Store' -or -name '._*' \) -exec rm -v \{\} \;"
 alias rot13 'perl -wne "tr/a-zA-Z/n-za-mN-ZA-M/;print;"'
+alias ss 'svn status --quiet --ignore-externals \!*'
 
 #
 # built-in completions
