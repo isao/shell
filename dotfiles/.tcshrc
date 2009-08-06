@@ -46,6 +46,7 @@ alias word 'grep \!* /usr/share/dict/words'
 alias rmmacmeta "find \!* \( -name '.DS_Store' -or -name '._*' \) -exec rm -v \{\} \;"
 alias rot13 'perl -wne "tr/a-zA-Z/n-za-mN-ZA-M/;print;"'
 alias ss 'svn status --quiet --ignore-externals \!*'
+alias ss? 'svn status \!*'
 
 #
 # built-in completions
