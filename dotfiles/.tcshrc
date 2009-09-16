@@ -74,6 +74,7 @@ complete uncomplete 'p/*/X/'
 if(-X bbedit) complete bbedit 'c/--/(background clean create front-window new-window print pipe-title worksheet view-top resume wait)/'
 if(-X nano) complete nano 'c/--/(autoindent backup help nowrap)/'
 if(-X port) complete port 'p/*/(search info variants deps dependents install uninstall activate deactivate installed location contents provides sync outdated upgrade clean echo list version selfupdate help)/' 'N/port/(all current active inactive installed uninstalled outdated)/'
+if(-X git) complete git 'p/*/(add bisect branch checkout clone commit diff fetch grep init log merge mv pull push rebase reset rm show status tag)/'
 
 #
 # completions using optional external lists
