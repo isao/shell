@@ -38,6 +38,9 @@ alias = "python -c 'print \!*'"
 alias e $EDITOR
 alias ip "ifconfig | grep 'inet '"
 alias ls. '/bin/ls -dF .?*'  # ls dot files & dirs only
+#http://episteme.arstechnica.com/eve/forums/a/tpc/f/8300945231/m/284004131041
+#view man page as a PDF file
+if(-X pstopdf) alias man2pdf 'man -t $@ | pstopdf -i -o /tmp/$1.pdf && open /tmp/$1.pdf'
 alias man2txt 'man \!* | col -b'
 alias dict "curl -s 'dict://dict.org/d:\!*' | egrep -v '^[0-9]{3} .*|^\.'"
 alias showenv 'env | sort'
@@ -47,6 +50,7 @@ alias rmmacmeta "find \!* \( -name '.DS_Store' -or -name '._*' \) -exec rm -v \{
 alias rot13 'perl -wne "tr/a-zA-Z/n-za-mN-ZA-M/;print;"'
 alias ss 'svn status --quiet --ignore-externals \!*'
 alias ss? 'svn status \!*'
+
 
 #
 # built-in completions
