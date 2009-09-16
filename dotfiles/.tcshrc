@@ -39,8 +39,8 @@ alias e $EDITOR
 alias ip "ifconfig | grep 'inet '"
 alias ls. '/bin/ls -dF .?*'  # ls dot files & dirs only
 #http://episteme.arstechnica.com/eve/forums/a/tpc/f/8300945231/m/284004131041
-#view man page as a PDF file
-if(-X pstopdf) alias man2pdf 'man -t $@ | pstopdf -i -o /tmp/$1.pdf && open /tmp/$1.pdf'
+#view man page as a PDF
+if(-x /Applications/Preview.app) alias man2pdf 'man -t \!* | open -f -a /Applications/Preview.app'
 alias man2txt 'man \!* | col -b'
 alias dict "curl -s 'dict://dict.org/d:\!*' | egrep -v '^[0-9]{3} .*|^\.'"
 alias showenv 'env | sort'
