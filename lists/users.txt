@@ -1,9 +1,10 @@
 apache
+b2admin
+b2user
+backupman
 ftp
 i5ao
 isao
-iyagi
 root
 users
 wheel
-www

@@ -1,10 +1,4 @@
 alpha
 bravo
-dev
 etherjar.com
-etherwerks.com
-master
-shell.sf.net
-slave
 stage
-174.132.132.186
