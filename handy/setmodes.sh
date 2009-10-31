@@ -10,7 +10,7 @@ abort()
 {
 	cat <<USAGE >&2
 usage: `basename $0` <ownership> <path1> [... <path2>...]
-description: recursively set user and group ownership and modes
+description: recursively set user/group ownership and permissions
 error: $1
 USAGE
 	exit $2
