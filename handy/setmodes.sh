@@ -1,21 +1,29 @@
-#!/bin/sh -e
+#!/bin/sh
 
-if [ -z "$@" ]
-then
-	echo "Usage: `basename $0` [path...]"
-	echo "No paths specified, using defaults."
-	dlist='/var/www/build /var/www/html /var/www/content /var/www/media'
-else
-	dlist=$@
-fi
+#input
+owners=$1
+shift
+paths=$@
 
-echo "set modes in: $dlist"
+#usage
+abort()
+{
+	cat <<USAGE >&2
+usage: `basename $0` <ownership> <path1> [... <path2>...]
+description: recursively set user and group ownership and modes
+error: $1
+USAGE
+	exit $2
+}
 
-find $dlist \
-	-exec chown -v iyagi:apache \{\} \;\
-	-exec chmod -v ug=rw,+X,o=u-w \{\} \;
+#checks
+[[ -z $owners ]] && abort 'missing ownership parameter, like "root:b2user"' 1
+[[ -z $paths ]] && abort 'missing path parameter(s)' 2
+for i in $paths
+do
+	[[ ! -w $i ]] && abort "can't write to $i" 3
+done
 
-# =rw,+X  set the read and write permissions to the usual defaults,
-#         but retain any execute permissions that are currently set.
-# g=u-w   set the group bits equal to the user bits, but clear the
-#         group write bit.
+#do it
+chown -R $owners $paths
+chmod -R ug=rwX,o= $paths
