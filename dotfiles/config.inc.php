@@ -20,11 +20,12 @@ $cfg['PmaAbsoluteUri'] = 'http://localhost/pma/';
 $cfg['McryptDisableWarning'] = true;
 $cfg['PmaNoRelation_DisableWarning'] = false;
 
+$cfg['TitleDefault'] = '@VERBOSE@ @DATABASE@ @TABLE@';
+
 /*
  * Servers configuration
  */
 $i = 0;
-
 
 
 /*
@@ -35,6 +36,7 @@ $cfg['Servers'][$i]['auth_type'] = 'config';//cookie|config
 $cfg['Servers'][$i]['user'] = 'isao';
 $cfg['Servers'][$i]['password'] = 'pavCAN7';
 $cfg['Servers'][$i]['host'] = '127.0.0.1';
+$cfg['Servers'][$i]['verbose'] = 'chachbook';
 $cfg['Servers'][$i]['connect_type'] = 'socket';//socket|tcp
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['extension'] = 'mysqli';
@@ -56,7 +58,6 @@ $cfg['Servers'][$i]['table_info']      = 'pma_table_info';//
 
 /*
  * STAGE
- */
 $i++;
 $cfg['Servers'][$i]['user'] = 'isao';
 $cfg['Servers'][$i]['password'] = 'pavCAN7';
@@ -76,6 +77,7 @@ $cfg['Servers'][$i]['pdf_pages'] = 'pma_pdf_pages';
 $cfg['Servers'][$i]['relation'] = 'pma_relation';
 $cfg['Servers'][$i]['table_coords'] = 'pma_table_coords';
 $cfg['Servers'][$i]['table_info'] = 'pma_table_info';
+ */
 
 
 /* rajk - for blobstreaming */
