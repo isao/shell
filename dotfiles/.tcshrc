@@ -48,9 +48,13 @@ alias showpath 'echo $PATH | tr : "\n"'
 alias word 'grep \!* /usr/share/dict/words'
 alias rmmacmeta "find \!* \( -name '.DS_Store' -or -name '._*' \) -exec rm -v \{\} \;"
 alias rot13 'perl -wne "tr/a-zA-Z/n-za-mN-ZA-M/;print;"'
-alias ss 'svn status --quiet --ignore-externals \!*'
-alias ss? 'svn status \!*'
 
+#show status but ignore ? and X
+alias ss 'svn status --quiet --ignore-externals \!*'
+#show just ?
+alias ss? 'svn status \!* | grep ^\?'
+#show ?, ignored, externals
+alias ss?? "svn status --no-ignore \!* |egrep '^[?IX]'"
 
 #
 # built-in completions
