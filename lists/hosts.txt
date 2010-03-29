@@ -1,7 +1,8 @@
 alpha
 bravo
 etherjar.com
-stage
+fattext.com
+stage.media160.com
 elvis
 van
 174.120.165.66
