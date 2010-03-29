@@ -1,0 +1,7 @@
+#this file goes in ~/.ssh/config see `name ssh_config`
+
+Host 174.132.132.187 stage.media160.com
+	Port 50001
+
+ServerAliveInterval 300
+ServerAliveCountMax 3
