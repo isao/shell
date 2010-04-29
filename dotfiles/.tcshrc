@@ -4,7 +4,8 @@
 #
 # env vars
 #
-set path=(/opt/local/{,s,apache2/}bin /usr/local/bin /{,s}bin /usr/{,s}bin)
+#set path=(/opt/local/{,s,apache2/}bin /usr/local/bin /{,s}bin /usr/{,s}bin)
+set path=(/opt/local/{,s}bin /usr/local/{,zend/,mysql/}bin /{,s}bin /usr/{,s}bin)
 setenv EDITOR `which bbedit-w.sh nano pico edit vim vi | grep '^/' | head -1`
 setenv CVSEDITOR $EDITOR
 setenv SVN_EDITOR $EDITOR
@@ -45,6 +46,7 @@ alias man2txt 'man \!* | col -b'
 alias dict "curl -s 'dict://dict.org/d:\!*' | egrep -v '^[0-9]{3} .*|^\.'"
 alias showenv 'env | sort'
 alias showpath 'echo $PATH | tr : "\n"'
+alias checkpath 'ls -ld `echo $PATH | tr : "\n"`'
 alias word 'grep \!* /usr/share/dict/words'
 alias rmmacmeta "find \!* \( -name '.DS_Store' -or -name '._*' \) -exec rm -v \{\} \;"
 alias rot13 'perl -wne "tr/a-zA-Z/n-za-mN-ZA-M/;print;"'
