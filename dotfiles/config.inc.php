@@ -17,82 +17,70 @@
  */
 $cfg['blowfish_secret'] = 'ohai i noes';
 $cfg['PmaAbsoluteUri'] = 'http://localhost/pma/';
-$cfg['McryptDisableWarning'] = true;
-$cfg['PmaNoRelation_DisableWarning'] = false;
-
+$cfg['UploadDir'] = '/tmp';
+$cfg['SaveDir'] = '/tmp';
 $cfg['TitleDefault'] = '@VERBOSE@ @DATABASE@ @TABLE@';
+
 
 /*
  * Servers configuration
  */
-$i = 0;
-
 
 /*
  * LOCALHOST
  */
-$i++;
+$i = 1;
 $cfg['Servers'][$i]['auth_type'] = 'config';//cookie|config
-$cfg['Servers'][$i]['user'] = 'isao';
-$cfg['Servers'][$i]['password'] = 'pavCAN7';
+$cfg['Servers'][$i]['user'] = 'root';
+$cfg['Servers'][$i]['password'] = 'pl@sT1qu3';
 $cfg['Servers'][$i]['host'] = '127.0.0.1';
-$cfg['Servers'][$i]['verbose'] = 'chachbook';
+$cfg['Servers'][$i]['verbose'] = 'isao’s imac';
 $cfg['Servers'][$i]['connect_type'] = 'socket';//socket|tcp
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['extension'] = 'mysqli';
 
 //see ./Documentation.html#linked-tables
 //run ./scripts/create_tables.sql
-$cfg['Servers'][$i]['pmadb']           = 'pma';
+$cfg['Servers'][$i]['pmadb']           = 'phpmyadmin';
 $cfg['Servers'][$i]['controluser']     = 'pma';
 $cfg['Servers'][$i]['controlpass']     = 'XePXF93sN849wxmh';
+
 $cfg['Servers'][$i]['bookmarktable']   = 'pma_bookmark';
-$cfg['Servers'][$i]['column_info']     = 'pma_column_info';//
+$cfg['Servers'][$i]['column_info']     = 'pma_column_info';
 $cfg['Servers'][$i]['designer_coords'] = 'pma_designer_coords';
 $cfg['Servers'][$i]['history']         = 'pma_history';
-$cfg['Servers'][$i]['pdf_pages']       = 'pma_pdf_pages';//
-$cfg['Servers'][$i]['relation']        = 'pma_relation';//
-$cfg['Servers'][$i]['table_coords']    = 'pma_table_coords';//
-$cfg['Servers'][$i]['table_info']      = 'pma_table_info';//
+$cfg['Servers'][$i]['pdf_pages']       = 'pma_pdf_pages';
+$cfg['Servers'][$i]['relation']        = 'pma_relation';
+$cfg['Servers'][$i]['table_coords']    = 'pma_table_coords';
+$cfg['Servers'][$i]['table_info']      = 'pma_table_info';
+$cfg['Servers'][$i]['tracking']        = 'pma_tracking';
 
 
-/*
- * STAGE
+/**
+ * dev-db.medu.com
+ *
+ */
 $i++;
-$cfg['Servers'][$i]['user'] = 'isao';
-$cfg['Servers'][$i]['password'] = 'pavCAN7';
-$cfg['Servers'][$i]['auth_type'] = 'config';
-$cfg['Servers'][$i]['host'] = 'stage';
-$cfg['Servers'][$i]['connect_type'] = 'tcp';
-$cfg['Servers'][$i]['compress'] = false;
-$cfg['Servers'][$i]['extension'] = 'mysql';
-$cfg['Servers'][$i]['pmadb'] = 'phpmyadmin';
-$cfg['Servers'][$i]['controluser'] = 'pma';
-$cfg['Servers'][$i]['controlpass'] = 'LSZ4833CKYrD4PnG';
-$cfg['Servers'][$i]['bookmarktable'] = 'pma_bookmark';
-$cfg['Servers'][$i]['column_info'] = 'pma_column_info';
-$cfg['Servers'][$i]['designer_coords'] = 'pma_designer_coords';
-$cfg['Servers'][$i]['history'] = 'pma_history';
-$cfg['Servers'][$i]['pdf_pages'] = 'pma_pdf_pages';
-$cfg['Servers'][$i]['relation'] = 'pma_relation';
-$cfg['Servers'][$i]['table_coords'] = 'pma_table_coords';
-$cfg['Servers'][$i]['table_info'] = 'pma_table_info';
+$cfg['Servers'][$i]['auth_type'] = 'config';//cookie|config
+$cfg['Servers'][$i]['user'] = 'medu_user';
+$cfg['Servers'][$i]['password'] = 'pl@sT1qu3';
+$cfg['Servers'][$i]['host'] = 'dev-db.medu.com';
+$cfg['Servers'][$i]['verbose'] = 'bb DEV-db.medu.com';
+$cfg['Servers'][$i]['connect_type'] = 'tcp';//socket|tcp
+$cfg['Servers'][$i]['compress'] = true;
+$cfg['Servers'][$i]['extension'] = 'mysqli';
+
+
+/**
+ * test-db.medu.com
+ *
  */
-
-
-/* rajk - for blobstreaming */
-#$cfg['Servers'][$i]['bs_garbage_threshold'] = 50;
-#$cfg['Servers'][$i]['bs_repository_threshold'] = '32M';
-#$cfg['Servers'][$i]['bs_temp_blob_timeout'] = 600;
-#$cfg['Servers'][$i]['bs_temp_log_threshold'] = '32M';
-
-
-/*
- * End of servers configuration
- */
-
-/*
- * Directories for saving/loading files from server
- */
-$cfg['UploadDir'] = '';
-$cfg['SaveDir'] = '';
+$i++;
+$cfg['Servers'][$i]['auth_type'] = 'config';//cookie|config
+$cfg['Servers'][$i]['user'] = 'medu_user';
+$cfg['Servers'][$i]['password'] = 'pl@sT1qu3';
+$cfg['Servers'][$i]['host'] = 'bb test-db.medu.com';
+$cfg['Servers'][$i]['verbose'] = 'TEST-db.medu.com';
+$cfg['Servers'][$i]['connect_type'] = 'tcp';//socket|tcp
+$cfg['Servers'][$i]['compress'] = true;
+$cfg['Servers'][$i]['extension'] = 'mysqli';

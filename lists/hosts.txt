@@ -1,12 +1,3 @@
-alpha
-bravo
 etherjar.com
-fattext.com
-stage.media160.com
-elvis
-van
-174.120.165.66
-174.120.165.74
-174.132.132.186
-174.132.201.234
-174.132.201.226
+medu.com
+dev.medu.com
