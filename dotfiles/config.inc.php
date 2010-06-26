@@ -20,7 +20,7 @@ $cfg['PmaAbsoluteUri'] = 'http://localhost/pma/';
 $cfg['UploadDir'] = '/tmp';
 $cfg['SaveDir'] = '/tmp';
 $cfg['TitleDefault'] = '@VERBOSE@ @DATABASE@ @TABLE@';
-
+$cfg['SQLQuery']['Validate'] = true;
 
 /*
  * Servers configuration
@@ -32,9 +32,9 @@ $cfg['TitleDefault'] = '@VERBOSE@ @DATABASE@ @TABLE@';
 $i = 1;
 $cfg['Servers'][$i]['auth_type'] = 'config';//cookie|config
 $cfg['Servers'][$i]['user'] = 'root';
-$cfg['Servers'][$i]['password'] = 'pl@sT1qu3';
+$cfg['Servers'][$i]['password'] = 'pavCAN7';
 $cfg['Servers'][$i]['host'] = '127.0.0.1';
-$cfg['Servers'][$i]['verbose'] = 'isao’s imac';
+$cfg['Servers'][$i]['verbose'] = 'isao’s mbp';
 $cfg['Servers'][$i]['connect_type'] = 'socket';//socket|tcp
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['extension'] = 'mysqli';
@@ -54,33 +54,3 @@ $cfg['Servers'][$i]['relation']        = 'pma_relation';
 $cfg['Servers'][$i]['table_coords']    = 'pma_table_coords';
 $cfg['Servers'][$i]['table_info']      = 'pma_table_info';
 $cfg['Servers'][$i]['tracking']        = 'pma_tracking';
-
-
-/**
- * dev-db.medu.com
- *
- */
-$i++;
-$cfg['Servers'][$i]['auth_type'] = 'config';//cookie|config
-$cfg['Servers'][$i]['user'] = 'medu_user';
-$cfg['Servers'][$i]['password'] = 'pl@sT1qu3';
-$cfg['Servers'][$i]['host'] = 'dev-db.medu.com';
-$cfg['Servers'][$i]['verbose'] = 'BB dev-db.medu.com';
-$cfg['Servers'][$i]['connect_type'] = 'tcp';//socket|tcp
-$cfg['Servers'][$i]['compress'] = true;
-$cfg['Servers'][$i]['extension'] = 'mysqli';
-
-
-/**
- * test-db.medu.com
- *
- */
-$i++;
-$cfg['Servers'][$i]['auth_type'] = 'config';//cookie|config
-$cfg['Servers'][$i]['user'] = 'medu_user';
-$cfg['Servers'][$i]['password'] = 'pl@sT1qu3';
-$cfg['Servers'][$i]['host'] = 'bb test-db.medu.com';
-$cfg['Servers'][$i]['verbose'] = 'BB test-db.medu.com';
-$cfg['Servers'][$i]['connect_type'] = 'tcp';//socket|tcp
-$cfg['Servers'][$i]['compress'] = true;
-$cfg['Servers'][$i]['extension'] = 'mysqli';
