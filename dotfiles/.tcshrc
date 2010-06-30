@@ -13,7 +13,7 @@ setenv VISUAL $EDITOR
 setenv CVS_RSH ssh
 setenv CVSIGNORE '.DS_Store,._?*,.FBC*,.#?*'
 setenv GREP_OPTIONS '--binary-files=without-match'
-setenv LESS '--tabs=2 --LONG-PROMPT --ignore-case'
+setenv LESS '--tabs=2 --LONG-PROMPT --ignore-case --RAW-CONTROL-CHARS'
 setenv RSYNC_RSH $CVS_RSH
 
 
@@ -118,13 +118,13 @@ endif
 
 # keys
 bindkey "^[[5C" forward-word
-bindkey "^[[C" forward-word
+bindkey "^[[C"  forward-word
 bindkey "^[[5D" backward-word
-bindkey "^[[D" backward-word
-bindkey "^I" complete-word-fwd
+bindkey "^[[D"  backward-word
+bindkey "^I"    complete-word-fwd
 bindkey -k down history-search-forward
-bindkey -k up history-search-backward
-bindkey "^w" delete-word
+bindkey -k up   history-search-backward
+bindkey "^w"    delete-word
 bindkey "^[[3~" delete-char
 
 # completions, corrections
