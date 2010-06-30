@@ -57,6 +57,8 @@ alias ss? 'svn status \!* | grep ^\?'
 #show ?, ignored, externals
 alias ss?? "svn status --no-ignore \!* |egrep '^[?IX]'"
 
+if(-X osascript) alias findercwd osascript ~/Repos/shell/osx/findercwd.applescript
+
 #
 # built-in completions
 #
@@ -83,7 +85,7 @@ complete uncomplete 'p/*/X/'
 if(-X bbedit) complete bbedit 'c/--/(background clean create front-window new-window print pipe-title worksheet view-top resume wait)/'
 if(-X nano) complete nano 'c/--/(autoindent backup help nowrap)/'
 if(-X port) complete port 'p/*/(search info variants deps dependents install uninstall activate deactivate installed location contents provides sync outdated upgrade clean echo list version selfupdate help)/' 'N/port/(all current active inactive installed uninstalled outdated)/'
-if(-X git) complete git 'p/*/(add bisect branch checkout clone commit diff fetch grep init log merge mv pull push rebase reset rm show status tag)/'
+if(-X git) complete git 'p/1/(add bisect branch checkout clone commit diff fetch grep init log merge mv pull push rebase reset rm show status tag)/'
 
 #
 # completions using optional external lists
@@ -105,7 +107,7 @@ if(-r Repos/shell/lists || -r repos/shell/lists) then
   # This one will ssh to the file to fetch the list of files!
   complete scp 'c%*@*:%`set q=$:-0;set q="$q:s/@/ /";set q="$q:s/:/ /";set q=($q " ");$CVS_RSH $q[2] -l $q[1] ls -dp $q[3]\*`%' 'c%*:%`set q=$:-0;set q="$q:s/:/ /";set q=($q " ");$CVS_RSH $q[1] ls -dp $q[2]\*`%' 'c%*@%$myhosts%:' 'C@[./$~]*@f@' 'n/*/$myhosts/:'
   complete ssh 'c/*@/$myhosts//' 'p/*/$myusers/@'
-	if(-X sshfs) complete sshfs 'c/*@/$myhosts/:/' 'p/1/$myusers/@'
+	#if(-X sshfs) complete sshfs 'c/*@/$myhosts/:/' 'p/1/$myusers/@'
   complete svn 'p/1/(add blame cat checkout cleanup commit copy delete diff export help import info list lock log merge mkdir move propdel propedit propget proplist propset resolved revert status switch unlock update)//' 'n/prop{del,edit,get,set}/(svn:executable svn:externals svn:ignore svn:keywords svn:mime-type)//' 'c/--/(quiet verbose username password)/' 'n/log/(--stop-on-copy)/' 'n/{checkout,list}/$svnurls/'
 else
   complete chown 'c/--/(changes silent quiet verbose reference recursive help version)/' 'p/*/f/'
@@ -115,11 +117,15 @@ else
 endif
 
 # keys
+bindkey "^[[5C" forward-word
+bindkey "^[[C" forward-word
+bindkey "^[[5D" backward-word
+bindkey "^[[D" backward-word
 bindkey "^I" complete-word-fwd
 bindkey -k down history-search-forward
 bindkey -k up history-search-backward
-bindkey ^w delete-word # ctrl-w - fwd delete word
-bindkey "^[[3~" delete-char  # fwd del key - fwd delete
+bindkey "^w" delete-word
+bindkey "^[[3~" delete-char
 
 # completions, corrections
 # correct options are all | cmd | complete
