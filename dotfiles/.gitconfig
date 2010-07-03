@@ -20,3 +20,8 @@
 [web]
 	;hyperlink man pages
 	browser = lynx
+
+[alias]
+	s = status --untracked-files=no
+	ss = status --untracked-files=normal
+	bbdiff = difftool -t bb
