@@ -1,0 +1,22 @@
+[user]
+	name = Isao Yagi
+	email = isao.yagi@gmail.com
+
+[color]
+	;colorize output on console
+	ui = auto
+
+[pack]
+	; use all cpu cores
+	threads = 0
+
+[core]
+	editor = bbedit --wait --resume
+
+[difftool "bb"]
+	; git difftool -t bb [..]
+	cmd = bbdiff --wait --resume $REMOTE $LOCAL
+
+[web]
+	;hyperlink man pages
+	browser = lynx
