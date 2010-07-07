@@ -25,3 +25,7 @@
 	s = status --untracked-files=no
 	ss = status --untracked-files=normal
 	bbdiff = difftool --no-prompt --tool bb
+
+[tig]
+	tab-size = 2
+	author-width = 3
