@@ -14,7 +14,7 @@
 	editor = bbedit --wait --resume
 
 [difftool "bb"]
-	; git difftool -t bb [..]
+	;git difftool --tool bb [..]
 	cmd = bbdiff --wait --resume $REMOTE $LOCAL
 
 [web]
@@ -24,4 +24,4 @@
 [alias]
 	s = status --untracked-files=no
 	ss = status --untracked-files=normal
-	bbdiff = difftool -t bb
+	bbdiff = difftool --no-prompt --tool bb
