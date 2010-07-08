@@ -11,11 +11,12 @@
 	threads = 0
 
 [core]
-	editor = bbedit --wait --resume
+	editor = /usr/local/bin/bbedit --wait --resume
+	excludesfile = /Users/isao/.gitignore
 
 [difftool "bb"]
 	;git difftool --tool bb [..]
-	cmd = bbdiff --wait --resume $REMOTE $LOCAL
+	cmd = /usr/local/bin/bbdiff --wait --resume $REMOTE $LOCAL
 
 [web]
 	;hyperlink man pages
