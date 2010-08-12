@@ -1,2 +1,2 @@
 #!/bin/sh
-bbedit --wait --resume "$@"
+bbedit --wait --resume $@
