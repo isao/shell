@@ -11,23 +11,16 @@
 	threads = 0
 
 [core]
-	;editor = /usr/local/bin/bbedit --wait --resume
+	;ok for git, broken on tig -> editor = bbedit --wait --resume
 	editor = bbedit..sh
 	excludesfile = ~/.gitignore
-
-[difftool "bb"]
-	;git difftool --tool bb [..]
-	cmd = bbdiff..sh $REMOTE $LOCAL
 
 [web]
 	;hyperlinked man pages
 	browser = lynx
 
 [alias]
-	s = status --untracked-files=no
-	ss = status --untracked-files=normal
-	;bbdiff = difftool --no-prompt --tool bb
-	;bbx = !"sh -c \"[ -n $1 -a -n $2 ] && echo --wait --resume $1 $2; exit 0\""
+	bbdiff = difftool --no-prompt --extcmd bbdiff
 
 [tig]
 	tab-size = 2
@@ -35,11 +28,3 @@
 	show-rev-graph = yes
 	horizontal-scroll = 25%
 
-#[tig "bind"]
-#	generic = E !"/Users/isao/Desktop/test.sh 1 %(head) 2 %(file) 3"
-[cola]
-	savewindowsettings = false
-	fontdiff = Monaco,11,-1,5,50,0,0,0,0,0
-	tabwidth = 2
-[gui]
-	editor = /usr//usr/local/bin/bbedit/nano
