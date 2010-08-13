@@ -58,8 +58,7 @@ alias ss? 'svn status \!* | grep ^\?'
 alias ss?? "svn status --no-ignore \!* |egrep '^[?IX]'"
 alias gs 'git status --short --untracked-files=no \!*'
 alias gs? 'git status --short --untracked-files=normal \!*'
-alias gd 'git difftool -t bb \!*'
-
+if(-X bbdiff) alias gd 'git difftool --no-prompt --extcmd bbdiff \!*'
 if(-X osascript) alias findercwd 'cd `osascript ~/Repos/shell/osx/findercwd.applescript`'
 
 #
