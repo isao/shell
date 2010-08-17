@@ -11,8 +11,7 @@
 	threads = 0
 
 [core]
-	;ok for git, broken on tig -> editor = bbedit --wait --resume
-	editor = bbedit..sh
+	editor = bbedit --wait --resume
 	excludesfile = ~/.gitignore
 
 [web]
@@ -20,11 +19,25 @@
 	browser = lynx
 
 [alias]
-	bbdiff = difftool --no-prompt --extcmd bbdiff
+	;bbdiff = difftool --tool bbdiff
+	bbdiff = difftool --no-prompt --extcmd bbdiff "$LOCAL" "$REMOTE"
+
+[diff]
+	tool = bbdiff
+[difftool]
+	prompt = no
+[difftool "bbdiff"]
+	cmd = bbdiff --wait --resume "$LOCAL" "$REMOTE"
+
+[merge]
+	tool = bbdiff
+[mergetool]
+	prompt = no
+[mergetool "bbdiff"]
+	cmd = bbdiff --wait --resume "$LOCAL" "$REMOTE"
 
 [tig]
 	tab-size = 2
 	author-width = 3
 	show-rev-graph = yes
 	horizontal-scroll = 25%
-
