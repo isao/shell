@@ -11,7 +11,9 @@
 	threads = 0
 
 [core]
-	editor = bbedit --wait --resume
+	;works for git, not tig
+	;editor = bbedit --wait --resume
+	editor = bbedit..sh
 	excludesfile = ~/.gitignore
 
 [web]
@@ -40,4 +42,5 @@
 	tab-size = 2
 	author-width = 3
 	show-rev-graph = yes
-	horizontal-scroll = 25%
+	horizontal-scroll = 20%
+	split-view-height = 85%
