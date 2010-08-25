@@ -50,16 +50,26 @@ alias word 'grep \!* /usr/share/dict/words'
 alias rmmacmeta "find \!* \( -name '.DS_Store' -or -name '._*' \) -exec rm -v \{\} \;"
 alias rot13 'perl -wne "tr/a-zA-Z/n-za-mN-ZA-M/;print;"'
 
-#show status but ignore ? and X
-alias ss 'svn status --quiet --ignore-externals \!*'
-#show just ?
-alias ss? 'svn status \!* | grep ^\?'
-#show ?, ignored, externals
-alias ss?? "svn status --no-ignore \!* |egrep '^[?IX]'"
-alias gs 'git status --short --untracked-files=no \!*'
-alias gs? 'git status --short --untracked-files=normal \!*'
-if(-X bbdiff) alias gd 'git difftool --no-prompt --extcmd bbdiff \!*'
 if(-X osascript) alias findercwd 'cd `osascript ~/Repos/shell/osx/findercwd.applescript`'
+
+if(-X svn) then
+  #show status but ignore ? and X
+  alias ss 'svn status --quiet --ignore-externals \!*'
+  #show just ?
+  alias ss? 'svn status \!* | grep ^\?'
+  #show ?, ignored, externals
+  alias ss?? "svn status --no-ignore \!* |egrep '^[?IX]'"
+endif
+
+if(-X git) then
+  alias gs 'git status --short --untracked-files=no \!*'
+  alias gs? 'git status --short --untracked-files=normal \!*'
+  if(-X bbdiff) alias gd 'git difftool --tool=bbdiff \!*'
+  #if(-X git) complete git 'p/1/(add bisect branch checkout clone commit config diff fetch grep init log merge mv pull push rebase reset rm show status tag)/'
+  set gitcmd='add am annotate apply archimport archive bisect blame branch bundle cat-file check-attr check-ref-format checkout checkout-index cherry cherry-pick citool clean clone commit commit-tree config count-objects cvsexportcommit cvsimport cvsserver daemon describe diff diff-files diff-index diff-tree difftool fast-export fast-import fetch fetch-pack filter-branch fmt-merge-msg for-each-ref format-patch fsck fsck-objects gc get-tar-commit-id grep gui hash-object help http-backend http-fetch http-push imap-send index-pack init init-db instaweb log lost-found ls-files ls-remote ls-tree mailinfo mailsplit merge merge-base merge-file merge-index merge-octopus merge-one-file merge-ours merge-recursive merge-resolve merge-subtree merge-tree mergetool mktag mktree mv name-rev notes pack-objects pack-redundant pack-refs patch-id peek-remote prune prune-packed pull push quiltimport read-tree rebase receive-pack reflog relink remote remote-ftp remote-ftps remote-http remote-https repack replace repo-config request-pull rerere reset rev-list rev-parse revert rm send-email send-pack shell shortlog show show-branch show-index show-ref stage stash status stripspace submodule symbolic-ref tag tar-tree unpack-file unpack-objects update-index update-ref update-server-info upload-archive upload-pack var verify-pack verify-tag whatchanged write-tree'
+  complete git "p/1/($gitcmd)/" "n/help/($gitcmd)/"
+endif
+
 
 #
 # built-in completions
@@ -96,11 +106,8 @@ if(-r Repos/shell/lists || -r repos/shell/lists) then
 	set mylists=[rR]epos/shell/lists
   set myhosts=(`cat -s $mylists/hosts.txt| grep -v '^#'`)
   set myusers=(`cat -s $mylists/users.txt`)
-  #set cvsroots=(`cat -s $mylists/cvsroots.txt`)
-  #set cvspaths=(`cat -s $mylists/cvspaths.txt`)
   set svnurls=(`cat -s $mylists/svnurls.txt`)
   complete chown 'c/--/(changes help quiet recursive reference silent verbose version)/' 'c/*:/$myusers//' 'p/1/$myusers/:' 'p/*/f/'
-  #complete cvs 'n/-s/(CVS_RSH=ssh CVSEDITOR= USER=)/' 'n/-d/$cvsroots/' 'n/get/$cvspaths/' 'n/export/$cvspaths/' 'n/add/f/' 'n/commit/f/' 'n/diff/f/' 'n/import/f/' 'n/log/f/' 'n/status/f/' 'n/update/f/' 'n/-nq/(update)/' 'n/watch/(add remove)/' 'p/1/(add checkout commit diff export get history import log login rm rtag status tag update watch watchers)/'
   complete {host,nslookup,ping,route} 'p/*/$myhosts/'
   complete rsync 'c/*@/$myhosts//' 'c/--/(checksum copy-links cvs-exclude delete delete-excluded dry-run exclude-from= exclude= ignore-times include-from= include= modify-window= progress quiet recursive rsh=$CVS_RSH safe-links size-only times update verbose)/' 'p/*/f/'
   # complete scp 'c/*@/$myhosts//' 'p/*/f/'
@@ -112,7 +119,6 @@ if(-r Repos/shell/lists || -r repos/shell/lists) then
   complete svn 'p/1/(add blame cat checkout cleanup commit copy delete diff export help import info list lock log merge mkdir move propdel propedit propget proplist propset resolved revert status switch unlock update)//' 'n/prop{del,edit,get,set}/(svn:executable svn:externals svn:ignore svn:keywords svn:mime-type)//' 'c/--/(quiet verbose username password)/' 'n/log/(--stop-on-copy)/' 'n/{checkout,list}/$svnurls/'
 else
   complete chown 'c/--/(changes silent quiet verbose reference recursive help version)/' 'p/*/f/'
-  #complete cvs 'n/-s/(CVS_RSH=ssh CVSEDITOR= USER=)//' 'n/add/f/' 'n/commit/f/' 'n/diff/f/' 'n/import/f/' 'n/log/f/' 'n/status/f/' 'n/update/f/' 'n/-nq/(update)/' 'n/watch/(add remove)/' 'p/1/(add commit diff export get history import log login rm rtag status tag update watch watchers)/'
   complete rsync 'c/--/(checksum copy-links cvs-exclude delete delete-excluded exclude-from= exclude= ignore-times include-from= include= modify-window= progress quiet recursive rsh=$CVS_RSH safe-links size-only times update verbose)/' 'p/*/f/'
   complete svn 'p/1/(add blame cat checkout cleanup commit copy delete diff export help import info list lock log merge mkdir move propdel propedit propget proplist propset resolved revert status switch unlock update)//' 'n/prop{del,edit,get,set}/(svn:executable svn:externals svn:ignore svn:keywords svn:mime-type)//' 'c/--/(quiet verbose username password)/'
 endif
