@@ -5,7 +5,7 @@
 # env vars
 #
 set path=(/opt/local/{,s,apache2/}bin /{,s}bin /usr/{,s,local/}bin)
-setenv EDITOR `which bbedit-w.sh nano pico edit vim vi | grep '^/' | head -1`
+setenv EDITOR `which bbedit..sh nano pico edit vim vi | grep '^/' | head -1`
 setenv CVSEDITOR $EDITOR
 setenv SVN_EDITOR $EDITOR
 setenv VISUAL $EDITOR
@@ -84,12 +84,9 @@ complete uncomplete 'p/*/X/'
 #
 # app completions
 #
-if(-X bbedit) complete bbedit 'c/--/(background clean create front-window new-window print pipe-title worksheet view-top resume wait)/'
+if(-X bbedit) complete bbedit 'c/--/(background clean create front-window maketags new-window print pipe-title scratchpad worksheet view-top resume wait)/'
 if(-X nano) complete nano 'c/--/(autoindent backup help nowrap)/'
 if(-X port) complete port 'p/*/(search info variants deps dependents install uninstall activate deactivate installed location contents provides sync outdated upgrade clean echo list version selfupdate help)/' 'N/port/(all current active inactive installed uninstalled outdated)/'
-#if(-X git) complete git 'p/1/(add bisect branch checkout clone commit config diff fetch grep init log merge mv pull push rebase reset rm show status tag)/'
-set gitcmd='add am annotate apply archimport archive bisect blame branch bundle cat-file check-attr check-ref-format checkout checkout-index cherry cherry-pick citool clean clone commit commit-tree config count-objects cvsexportcommit cvsimport cvsserver daemon describe diff diff-files diff-index diff-tree difftool fast-export fast-import fetch fetch-pack filter-branch fmt-merge-msg for-each-ref format-patch fsck fsck-objects gc get-tar-commit-id grep gui hash-object help http-backend http-fetch http-push imap-send index-pack init init-db instaweb log lost-found ls-files ls-remote ls-tree mailinfo mailsplit merge merge-base merge-file merge-index merge-octopus merge-one-file merge-ours merge-recursive merge-resolve merge-subtree merge-tree mergetool mktag mktree mv name-rev notes pack-objects pack-redundant pack-refs patch-id peek-remote prune prune-packed pull push quiltimport read-tree rebase receive-pack reflog relink remote remote-ftp remote-ftps remote-http remote-https repack replace repo-config request-pull rerere reset rev-list rev-parse revert rm send-email send-pack shell shortlog show show-branch show-index show-ref stage stash status stripspace submodule symbolic-ref tag tar-tree unpack-file unpack-objects update-index update-ref update-server-info upload-archive upload-pack var verify-pack verify-tag whatchanged write-tree'
-if(-X git) complete git "p/1/($gitcmd)/" "n/help/($gitcmd)/"
 
 #
 # completions using optional external lists
