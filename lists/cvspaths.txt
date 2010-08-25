@@ -1,5 +1,0 @@
-php_verticals_v2
-php_framework_v2
-php_configs
-engine_v2
-php_images

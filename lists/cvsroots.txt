@@ -1,7 +1,0 @@
-:ext:i5ao@cvs.sf.net:/cvsroot/smac-template
-:ext:i5ao@cvs.sf.net:/cvsroot/smaco
-:ext:isao@etherwerks.com:/usr/home/isao/cvs
-:ext:iyagi@cvs.mediabolic.com:/home/cvsroot
-:pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot
-:pserver:iyagi@cvs.adt.adprofile.net:/home/cvsroot
-:pserver:iyagi@cvs.mediabolic.com:/home/cvsroot
