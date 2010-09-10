@@ -2,6 +2,13 @@
 	name = Isao Yagi
 	email = isao.yagi@gmail.com
 
+[core]
+	pager = cat
+	;works for git, not tig
+	;editor = bbedit --wait --resume
+	editor = bbedit..sh
+	excludesfile = ~/.gitignore
+
 [color]
 	;colorize output on console
 	ui = auto
@@ -10,18 +17,11 @@
 	; use all cpu cores
 	threads = 0
 
-[core]
-	;works for git, not tig
-	;editor = bbedit --wait --resume
-	editor = bbedit..sh
-	excludesfile = ~/.gitignore
-
 [web]
 	;hyperlinked man pages
 	browser = lynx
 
 [alias]
-	;bbdiff = difftool --tool bbdiff
 	bbdiff = difftool --no-prompt --extcmd bbdiff "$LOCAL" "$REMOTE"
 
 [diff]
@@ -43,4 +43,4 @@
 	author-width = 3
 	show-rev-graph = yes
 	horizontal-scroll = 20%
-	split-view-height = 85%
+	;split-view-height = 80%
