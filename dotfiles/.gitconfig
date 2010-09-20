@@ -48,3 +48,4 @@
 
 [tig "bind"]
 	status = , !git bbdiff
+	generic = ~ !open -R %(file)
