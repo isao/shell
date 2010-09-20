@@ -4,8 +4,11 @@
 
 [core]
 	pager = cat
-	;works for git, not tig
-	;editor = bbedit --wait --resume
+	;works for git, not tig:
+	;  editor = bbedit --wait --resume
+	;file bbedit..sh:
+	;  #!/bin/sh
+	;  bbedit --wait --resume $@
 	editor = bbedit..sh
 	excludesfile = ~/.gitignore
 
@@ -47,5 +50,14 @@
 	show-rev-graph = yes
 
 [tig "bind"]
+	;allow escape to toggle between main and status views
+	generic = Escape view-close
+	main = Escape view-status
+	
+	;reveal current selection in Finder or a new Terminal window
+	generic = - !open -R %(file)
+	generic = = !/Users/isao/Repos/shell/osx/terminal/newterm.sh %(directory)
+
+	;sends all files to stage or commit to bbdiff
 	status = , !git bbdiff
-	generic = ~ !open -R %(file)
+	stage = , !git bbdiff
