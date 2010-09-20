@@ -52,6 +52,10 @@ alias rot13 'perl -wne "tr/a-zA-Z/n-za-mN-ZA-M/;print;"'
 
 if(-X osascript) alias findercwd 'cd `osascript ~/Repos/shell/osx/findercwd.applescript`'
 
+if(-X cdargs && -r /opt/brew/Cellar/cdargs/1.35/contrib/cdargs-tcsh.csh) then
+  source /opt/brew/Cellar/cdargs/1.35/contrib/cdargs-tcsh.csh
+endif
+
 if(-X svn) then
   #show status but ignore ? and X
   alias ss 'svn status --quiet --ignore-externals \!*'
