@@ -21,15 +21,14 @@
 	;hyperlinked man pages
 	browser = lynx
 
-[alias]
-	bbdiff = difftool --no-prompt --extcmd bbdiff "$LOCAL" "$REMOTE"
-
 [diff]
 	tool = bbdiff
 [difftool]
 	prompt = no
 [difftool "bbdiff"]
 	cmd = bbdiff --wait --resume "$LOCAL" "$REMOTE"
+[alias]
+	bbdiff = difftool
 
 [merge]
 	tool = bbdiff
@@ -37,10 +36,15 @@
 	prompt = no
 [mergetool "bbdiff"]
 	cmd = bbdiff --wait --resume "$LOCAL" "$REMOTE"
+[alias]
+	bbmerge = mergetool
 
 [tig]
 	tab-size = 2
 	author-width = 3
-	show-rev-graph = yes
 	horizontal-scroll = 20%
-	;split-view-height = 80%
+	split-view-height = 85%
+	show-rev-graph = yes
+
+[tig "bind"]
+	status = , !git bbdiff
