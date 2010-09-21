@@ -46,7 +46,7 @@
 	tab-size = 2
 	author-width = 3
 	horizontal-scroll = 20%
-	split-view-height = 85%
+	;split-view-height = 85%
 	show-rev-graph = yes
 
 [tig "bind"]
@@ -54,9 +54,11 @@
 	generic = Escape view-close
 	main = Escape view-status
 	
-	;reveal current selection in a new Terminal or Finder window
-	generic = - !/Users/isao/Repos/shell/osx/terminal/newterm.sh %(directory)
-	generic = = !open -R %(file)
+	;reveal current selection in a Finder window
+	generic = | !open -R %(file)
+
+	;reveal current selection in a new Terminal window
+	generic = ] !/Users/isao/Repos/shell/osx/terminal/newterm.sh %(directory)
 
 	;sends all files to stage or commit to bbdiff
 	status = , !git bbdiff
