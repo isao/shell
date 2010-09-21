@@ -34,7 +34,10 @@ COMMAND="cd $WD; $@"
 
 osascript 2>/dev/null <<EOF
 	tell application "Terminal"
+		tell application "System Events" to tell process "Terminal"
+			keystroke "t" using command down
+		end tell
+		do script with command "$COMMAND $EXIT" in window 1
 		activate
-		do script with command "$COMMAND $EXIT"
 	end tell
 EOF
