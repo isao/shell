@@ -54,9 +54,9 @@
 	generic = Escape view-close
 	main = Escape view-status
 	
-	;reveal current selection in Finder or a new Terminal window
-	generic = - !open -R %(file)
-	generic = = !/Users/isao/Repos/shell/osx/terminal/newterm.sh %(directory)
+	;reveal current selection in a new Terminal or Finder window
+	generic = - !/Users/isao/Repos/shell/osx/terminal/newterm.sh %(directory)
+	generic = = !open -R %(file)
 
 	;sends all files to stage or commit to bbdiff
 	status = , !git bbdiff
