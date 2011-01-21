@@ -74,12 +74,11 @@ if(-X git) then
   #set gitcmd='add am annotate apply archimport archive bisect blame branch bundle cat-file check-attr check-ref-format checkout checkout-index cherry cherry-pick citool clean clone commit commit-tree config count-objects cvsexportcommit cvsimport cvsserver daemon describe diff diff-files diff-index diff-tree difftool fast-export fast-import fetch fetch-pack filter-branch fmt-merge-msg for-each-ref format-patch fsck fsck-objects gc get-tar-commit-id grep gui hash-object help http-backend http-fetch http-push imap-send index-pack init init-db instaweb log lost-found ls-files ls-remote ls-tree mailinfo mailsplit merge merge-base merge-file merge-index merge-octopus merge-one-file merge-ours merge-recursive merge-resolve merge-subtree merge-tree mergetool mktag mktree mv name-rev notes pack-objects pack-redundant pack-refs patch-id peek-remote prune prune-packed pull push quiltimport read-tree rebase receive-pack reflog relink remote remote-ftp remote-ftps remote-http remote-https repack replace repo-config request-pull rerere reset rev-list rev-parse revert rm send-email send-pack shell shortlog show show-branch show-index show-ref stage stash status stripspace submodule symbolic-ref tag tar-tree unpack-file unpack-objects update-index update-ref update-server-info upload-archive upload-pack var verify-pack verify-tag whatchanged write-tree'
   set gitcmd='add am annotate apply archive bbdiff bisect blame branch bundle cat-file checkout cherry cherry-pick citool clean clone commit commit-tree config describe diff diff-files diff-index diff-tree difftool fast-export fast-import fetch filter-branch format-patch fsck gc grep gui help init log ls-files ls-remote ls-tree merge merge-base merge-file merge-one-file merge-ours merge-recursive merge-resolve merge-subtree merge-tree mergetool mktag mktree mv name-rev notes patch-id prune prune-packed pull push read-tree rebase reflog relink remote repack replace repo-config request-pull rerere reset rev-list rev-parse revert rm send-email shortlog show show-branch show-index show-ref stage stash status stripspace submodule symbolic-ref tag tar-tree update-index update-ref update-server-info var verify-tag whatchanged write-tree'
   #alias _gitdir 'git rev-parse --show-cdup'
-  complete git "p/1/($gitcmd)/" "n/help/($gitcmd)/" 'n~checkout~F:.git/refs/heads~' 'N~branch~F:.git/refs/heads~'
+  complete git "p/1/($gitcmd)/" "n/help/($gitcmd)/" 'n~checkout~F:.git/refs/heads~' 'N~branch~F:.git/refs/heads~' 'n/remote/(show add rm prune update)/' 'N/remote/`git remote`/'
 endif
 
 if(-X tig) then
   alias ts 'tig status'
-  alias tvgtigstatus 'cd ~/Repos/tvg3 && tig status'
   complete tig 'n/(show blame status help --)/' 'C/?/f/'
 endif
 
