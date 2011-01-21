@@ -50,7 +50,7 @@ alias word 'grep \!* /usr/share/dict/words'
 alias rmmacmeta "find \!* \( -name '.DS_Store' -or -name '._*' \) -exec rm -v \{\} \;"
 alias rot13 'perl -wne "tr/a-zA-Z/n-za-mN-ZA-M/;print;"'
 
-alias irclog 'ssh isao@devservices "tail -n200 -F irclogs/localhost/?usx-fe.log"'
+alias irclog 'ssh isao@devservices "tail \!* irclogs/localhost/?usx-fe.log"'
 alias ircterm 'ssh -t isao@devservices "screen -dr irc"'
 
 if(-X osascript) alias findercwd 'cd `osascript ~/Repos/shell/osx/findercwd.applescript`'
