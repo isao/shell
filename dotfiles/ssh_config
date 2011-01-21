@@ -1,7 +1,11 @@
-#this file goes in ~/.ssh/config see `name ssh_config`
+#this file goes in ~/.ssh/config see `man ssh_config`
 
-Host 174.132.132.187 stage.media160.com
-	Port 50001
+#Host 174.132.132.187 stage.media160.com
+#	Port 50001
 
 ServerAliveInterval 300
 ServerAliveCountMax 3
+
+Host *,!10.213.3.180
+	ControlPath ~/.ssh/master-%r@%h:%p
+	ControlMaster auto
