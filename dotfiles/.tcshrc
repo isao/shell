@@ -110,8 +110,12 @@ complete uncomplete 'p/*/X/'
 # app completions
 #
 if(-X bbedit) complete bbedit 'c/--/(background clean create front-window maketags new-window print pipe-title scratchpad worksheet view-top resume wait)/'
+
+if(-X brew) complete brew 'c/--/(verbose prefix cache config)/' 'p/1/(install list info home rm remove create edit ln link unlink prune outdated deps uses doctor cat cleanup update log fetch)/' 'n~{deps,uses,cat,cleanup,log,home,edit}~`brew list`~' 'n/info/(--github --all)/'
+
 if(-X nano) complete nano 'c/--/(autoindent backup help nowrap)/'
-if(-X port) complete port 'p/*/(search info variants deps dependents install uninstall activate deactivate installed location contents provides sync outdated upgrade clean echo list version selfupdate help)/' 'N/port/(all current active inactive installed uninstalled outdated)/'
+
+if(-X port) complete port 'p/1/(search info variants deps dependents install uninstall activate deactivate installed location contents provides sync outdated upgrade clean echo list version selfupdate help)/' 'n/echo/(current active inactive installed requested uninstalled outdated)/'
 
 #
 # completions using optional external lists
