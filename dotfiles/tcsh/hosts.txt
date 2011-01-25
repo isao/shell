@@ -1,3 +1,0 @@
-etherjar.com
-devsandbox
-devservices

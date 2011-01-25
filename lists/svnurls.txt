@@ -1,4 +1,0 @@
-http://174.132.132.186/svn/root/
-http://dev/svn/root/
-http://etherjar.com/svn/
-https://smacs.googlecode.com/svn/
