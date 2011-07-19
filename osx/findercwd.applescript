@@ -1,8 +1,7 @@
-tell application "Finder"
-	if (count of Finder windows) > 0 then
-		set cwd to the POSIX path of (target of the front Finder window as alias)
-	else 
-		set cwd to "~"
-	end if
-	return cwd
+tell app "Finder"
+  if front Finder window exists then
+    (front Finder window's target as alias)'s POSIX path
+  else
+    "~/Desktop"
+  end if
 end tell
