@@ -1,2 +1,2 @@
 #indent#
-if(!defined('#select#')) define('#select#');
+if(!defined('#select#')) define('#select#', #insertion#);

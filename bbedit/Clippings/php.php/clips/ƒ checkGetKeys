@@ -1,5 +1,0 @@
-#indent#
-function checkGetKeys ($a1, $a2 = $_GET)	// two assoc arrays
-{
-	return sizeof (array_diff ($a1, array_keys ($_GET))) == 0;
-}

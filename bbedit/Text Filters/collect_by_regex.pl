@@ -15,7 +15,9 @@
 
 #my $regex = 'name="([^"]+)"';
 
-my $regex = '(?=function )([^\(]+)';
+#my $regex = '(?=function )([^\(]+)';
+
+my $regex = '\{\{([^}]+)\}\}';
 
 my @found;
 

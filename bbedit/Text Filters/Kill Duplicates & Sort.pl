@@ -4,7 +4,10 @@ use strict;
 
 my %seen;
 while (<>) {
+	chomp;
     $seen{$_}++;
 }
 
-print sort keys %seen;
+foreach (sort keys %seen) {
+	print $_, "\n";
+}

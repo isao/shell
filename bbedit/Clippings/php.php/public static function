@@ -1,0 +1,5 @@
+#indent#
+public static function #selstart##select##selend#()
+{
+	
+}

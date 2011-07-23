@@ -1,0 +1,5 @@
+#indent#
+protected static function #selstart##select##selend#()
+{
+	
+}

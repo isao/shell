@@ -1,9 +1,9 @@
 #indent#
 switch(#insertion#)
 {
-  case '':
-    break;
+	case '':
+		break;
 
-  default:
-    break;
+	default:
+		break;
 }

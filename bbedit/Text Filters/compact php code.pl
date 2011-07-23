@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #use warnings;
 while (<>) {
-	s|/\*[\s\S]*?\*/||g;	# delete /* multiline comments */
+	s|/\*+[\s\S]+?\*/||g;	# delete /* multiline comments */
 	s|\s*//.*$||g;				# delete to end of line // comments
 	s/^\s+|\s+$//g;				# delete leading & trailing whitespace
 	s/\s*([{}().,:;=?+-\/*@&%^])\s*/$1/g;	# delete spaces around {}().,:;=?+-/*@&%^

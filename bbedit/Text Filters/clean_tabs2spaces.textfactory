@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BBEditDocumentType</key>
+	<string>TextTransform</string>
+	<key>TextTransformComponents</key>
+	<array>
+		<dict>
+			<key>ComponentArguments</key>
+			<dict>
+				<key>Arguments</key>
+				<string></string>
+				<key>ScriptFile</key>
+				<dict>
+					<key>FileName</key>
+					<string>trim.pl</string>
+					<key>FileURLString</key>
+					<string>file://localhost/Users/isao/Dropbox/Meta/BBEdit/Unix%20Support/Unix%20Filters/trim.pl</string>
+					<key>ParentDirID</key>
+					<integer>724749</integer>
+					<key>VolumeAlias</key>
+					<data>
+					AAAAAAEOAAIAAQhiZXRkcml2ZQAAAAAAAAAA
+					AAAAAAAAAAAAAADH74AXSCsAAAAAAAEIYmV0
+					ZHJpdmUAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAsfvgBcAAAAAAAAAAP////8A
+					AAkgAAAAAAAAAAAAAAAAAAAACGJldGRyaXZl
+					ABAACAAAx+/ihwAAABEACAAAx+/ihwAAAAEA
+					AAACABFiZXRkcml2ZTpiZXRkcml2ZQAADgAS
+					AAgAYgBlAHQAZAByAGkAdgBlAA8AEgAIAGIA
+					ZQB0AGQAcgBpAHYAZQASAAAAEwABLwD//wAA
+					</data>
+				</dict>
+				<key>UseUTF8ForIO</key>
+				<true/>
+			</dict>
+			<key>ComponentName</key>
+			<string>RunUnixScript</string>
+		</dict>
+		<dict>
+			<key>ComponentArguments</key>
+			<dict>
+				<key>TabWidth</key>
+				<integer>2</integer>
+			</dict>
+			<key>ComponentName</key>
+			<string>Detab</string>
+		</dict>
+	</array>
+	<key>TextTransformOptions</key>
+	<dict>
+		<key>SaveMode</key>
+		<string>ask </string>
+		<key>SearchInvisibles</key>
+		<false/>
+		<key>SearchRecursive</key>
+		<true/>
+		<key>SkipShielded</key>
+		<false/>
+		<key>TextFilesOnly</key>
+		<true/>
+	</dict>
+	<key>TextTransformSources</key>
+	<array/>
+	<key>com.barebones.DocumentType</key>
+	<string>TextTransform</string>
+</dict>
+</plist>
