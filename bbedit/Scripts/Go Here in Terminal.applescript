@@ -1,7 +1,10 @@
-on run
-	getFolderPosixPath for the getFirstBbDocAlias()
-	tellTerminal to "cd " & result
-end run
+(*
+	Go to the directory containing the current text document open in BBEdit in Terminal.
+	Use an existing window/tab if possible (BBEdit's built-in command always opens a new
+	Terminal window).
+
+	@author Isao Yagi
+*)
 
 to getFirstBbDocAlias()
 	tell application "BBEdit"
@@ -37,3 +40,8 @@ to tellTerminal to do_something
 		activate
 	end tell
 end tellTerminal
+
+on run
+	getFolderPosixPath for the getFirstBbDocAlias()
+	tellTerminal to "cd " & result
+end run
