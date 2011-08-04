@@ -41,7 +41,5 @@ to tellTerminal to do_something
 	end tell
 end tellTerminal
 
-on run
-	getFolderPosixPath for the getFirstBbDocAlias()
-	tellTerminal to "cd " & result
-end run
+getFolderPosixPath for the getFirstBbDocAlias()
+tellTerminal to "cd " & result
