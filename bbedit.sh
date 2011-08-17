@@ -1,3 +1,8 @@
 #!/bin/sh
 #  Usage: bbedit.sh file
-ssh iyagi@gonzo.internal.mediabolic.com bbedit sftp://`whoami`@`hostname`/`pwd`/$1
+
+tell=`which yssh ssh | head -1`
+
+mac=isao@alloutside-lm.corp
+
+$tell $mac bbedit sftp://`whoami`@`hostname`/`pwd`/$1
