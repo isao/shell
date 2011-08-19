@@ -1,7 +1,11 @@
 #!/bin/sh
-# Usage: bbedit.sh [file]
-# have bbedit open a file (or stdin) on your mac by running this script on a
-# remote non-mac. if no arguments, pipe stdin to bbedit.
+# Usage: bbedit.sh [file|dir]
+# uses ssh to tell bbedit on my mac to open file local to this script using
+# scp. if no argment passed to this script, pipe stdin over ssh to bbedit
+#
+# e.g.:
+#   linuxbox% bbedit.sh /etc/hosts
+#   linuxbox% ps auxw | bbedit.sh
 
 tell=`which yssh ssh | head -1`
 mymac=isao@alloutside-lm.corp
@@ -18,8 +22,7 @@ else
     #full path to dir; opening a dir over scp broken in bbedit 10.0.1?    
     ref=$(cd $1 && pwd)
 
-  elif [[ -f $1 ]]
-  then
+  else
     #full path to file
     ref=$(cd `dirname $1` && pwd)/$(basename $1)
   fi
