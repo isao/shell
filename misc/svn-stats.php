@@ -4,6 +4,7 @@
   usage: svn log | svn-stats.php [-l]
 
   (any command line argument will sort by lines rather than commits)
+
   sample:
 
   users    commits  commit%  lines    line%  (sorted by commits)
@@ -13,6 +14,7 @@
   msbar          7    18.4%      7    18.4%
   someguy        2     5.3%      2     5.3%
   ..etc
+
 */
 
 function get_stats($file) {
