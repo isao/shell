@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php
-print json_indent(file_get_contents($argv[1])).PHP_EOL;
+print json_indent(file_get_contents('php://stdin')).PHP_EOL;
 
 /**
  * pretty print JSON string
@@ -8,6 +8,7 @@ print json_indent(file_get_contents($argv[1])).PHP_EOL;
  * by damon1977@gmail.com
  */
 function json_indent($json) {
+	$json = json_encode(json_decode($json));//remove formatting hack
 	$tabcount = 0;
 	$result = '';
 	$inquote = false;

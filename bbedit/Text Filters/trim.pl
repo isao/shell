@@ -1,2 +1,2 @@
 #!/usr/bin/perl -wp
-s/( |\t)+$//;	# trim trailing spaces or tabs
+s/[ \t]+$//;	# trim trailing spaces or tabs
