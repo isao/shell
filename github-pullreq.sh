@@ -2,8 +2,11 @@
 # based on Vladimir Panteleev's https://gist.github.com/1885859
 
 # usage: github-pullreq.sh [remote]
-# invoke from your local github fork and local topic branch will be pushed to
-# the remote specified as optional arg, or the first one with your github user
+# invoke from your local github fork to:
+# - push local topic branch to remote
+# - open corresponding github.com pull request page 
+# n.b. will use the remote name specified as an (optional) arg. If ommitted,
+# the first one containing your github user name will be used
 #
 # put this in your .gitconfig to use like: git pushreq [remote]
 # [alias]
@@ -14,6 +17,10 @@ die() {
   exit 1
 }
 
+#
+#   vars
+#
+
 branch=$(git name-rev --name-only HEAD 2>/dev/null)
 ghusr=$(git config --get github.user)
 
@@ -21,10 +28,18 @@ ghusr=$(git config --get github.user)
 ghrem=${1:-$(git remote -v | grep -Fm1 $ghusr/ | cut -f 1)}
 ghuri=$(git remote -v | grep -m1 github.com: | egrep -o "$ghusr/\w+")
 
+#
+#   checks
+#
+
 [[ -n $branch ]] || die 'no branch!'
 [[ $branch != master && $branch != develop ]] || die 'use topic branch'
 [[ -n $ghusr ]] || die "github.user not set"
 [[ -n $ghrem ]] || die "no remote found for github.user '$ghusr'"
+
+#
+#   main
+#
 
 # push
 git push -v $ghrem $branch
