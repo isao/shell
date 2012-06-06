@@ -1,6 +1,14 @@
 #!/bin/bash -e
 # based on Vladimir Panteleev's https://gist.github.com/1885859
 
+# usage: github-pullreq.sh [remote]
+# invoke from your local github fork and local topic branch will be pushed to
+# the remote specified as optional arg, or the first one with your github user
+#
+# put this in your .gitconfig to use like: git pushreq [remote]
+# [alias]
+#   pushreq = !github-pullreq.sh
+
 die() {
   echo "$@" >&2
   exit 1
