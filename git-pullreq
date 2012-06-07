@@ -1,16 +1,14 @@
 #!/bin/bash -e
 # based on Vladimir Panteleev's https://gist.github.com/1885859
 
-# usage: github-pullreq.sh [remote]
+# usage: git pullreq [remotename]
 # invoke from your local github fork to:
 # - push local topic branch to remote
-# - open corresponding github.com pull request page 
+# - open corresponding github.com pull request page
 # n.b. will use the remote name specified as an (optional) arg. If ommitted,
 # the first one containing your github user name will be used
 #
-# put this in your .gitconfig to use like: git pushreq [remote]
-# [alias]
-#   pushreq = !github-pullreq.sh
+# to install: put this script in your $PATH
 
 die() {
   echo "$@" >&2
