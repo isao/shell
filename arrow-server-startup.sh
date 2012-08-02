@@ -2,6 +2,9 @@
 
 echo "starting arrow_server"
 arrow_server &
+sleep 2
 
 echo "starting selenium"
-java -jar /opt/brew/Cellar/selenium-server-standalone/2.24.1/selenium-server-standalone-2.24.1.jar -p 4444
+jarf=$(ls /opt/brew/Cellar/selenium-server-standalone/2.*/selenium-server-standalone-2.*.jar | tail -1)
+
+java -Dwebdriver.firefox.profile=default -jar $jarf
