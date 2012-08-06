@@ -1,2 +1,2 @@
 #!/bin/sh
-bbdiff --wait --resume $@
+bbdiff --wait --resume "$@"
