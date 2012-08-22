@@ -4,11 +4,15 @@
 # run all arrow tests from cwd and just display the results
 
 err() {
-    echo "error: $2"; exit $1
+    echo "error: $2" >&2
+    exit $1
 }
-which pgrep arrow >/dev/null || err 1 "missing executable(s)"
-pgrep -f arrow_server >/dev/null || err 3 'arrow_server not running'
-pgrep -f selenium >/dev/null || err 5 'selenium not running'
 
-opts="--driver=selenium --reuseSession=true --logLevel=WARN $@"
-find . -name '*descriptor.json' | xargs -tn1 arrow $opts | egrep '^ |..32m[0-9]+'
+which pgrep arrow java >/dev/null || err 1 'missing prerequisites'
+pgrep -fq arrow_server selenium || err 3 'daemons not running'
+
+logf=/dev/null
+opts="--reuseSession=true --logLevel=ERROR $@"
+
+find . -name '*descriptor.json' | xargs -tn1 arrow $opts \
+    | tee $logf | egrep '^ |..32m[0-9]+'
