@@ -2,7 +2,8 @@
 
 #need to do this a lot...
 cleanup() {
-	pkill -f arrow_ phantomjs selenium- firefox-bin 2>/dev/null || echo 0 kills
+	pkill -fl arrow_ phantomjs selenium- firefox-bin webdriver 2>/dev/null ||\
+	    echo 0 kills
 }
 
 #yeah, need all of these too
@@ -15,8 +16,8 @@ which $required >/dev/null || {
     exit $1
 }
 
-cd $(whichnpmln.sh mojito)
-cleanup
+# cd $(whichnpmln.sh mojito)
+# cleanup
 
 #cleanup on SIGINT
 trap 'cleanup && exit 1' INT
@@ -24,11 +25,11 @@ trap 'cleanup && exit 1' INT
 #start effing selenium in the bg
 jarf=$(brew ls selenium-server-standalone | grep .jar)
 set -x
-java -Dwebdriver.firefox.profile=default -jar $jarf &
+java -Dwebdriver.firefox.profile=default -jar $jarf
 
 #run tests
-sleep 9
-npm test
+#sleep 9
+#npm test
 
 #clean up the mess
-cleanup
+#cleanup
