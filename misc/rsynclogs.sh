@@ -7,7 +7,7 @@ dir=/tmp/logs
 rsh=`which yssh ssh| head -1`
 
 #change these...
-hosts="golduck.mobile.sp2.yahoo.com xatu.mobile.sp2.yahoo.com charmeleon.mobile.re3.yahoo.com"
+hosts="redacted"
 
 #...or specify them as command line arguments to override
 [[ ! -z $@ ]] && hosts=$@

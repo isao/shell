@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# permissions to apply: X flips executable bits on dirs only
+mode='ug=rwX,o='
+
 #input
 owners=$1
 shift
@@ -26,4 +29,4 @@ done
 
 #do it
 chown -R $owners $paths
-chmod -R ug=rwX,o= $paths
+chmod -R $mode $paths
