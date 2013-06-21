@@ -24,7 +24,7 @@ ghusr=$(git config --get github.user)
 
 # pass remote name as arg, or assume it's the first one with your username
 ghrem=${1:-$(git remote -v | grep -Fm1 $ghusr/ | cut -f 1)}
-ghuri=$(git remote -v | grep -m1 github.com: | egrep -o "$ghusr/\w+")
+ghuri=$(git remote -v | grep -m1 github.com: | egrep -o "$ghusr/[^. ]+")
 
 #
 #   checks
