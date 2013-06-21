@@ -31,7 +31,7 @@ ghuri=$(git remote -v | grep -m1 github.com: | egrep -o "$ghusr/[^. ]+")
 #
 
 [[ -n $branch ]] || die 'no branch!'
-[[ $branch =~ ^(master|develop)$ ]] && die 'use topic branch'
+#[[ $branch =~ ^(master|develop)$ ]] && die 'use topic branch'
 [[ -n $ghusr ]] || die "github.user not set"
 [[ -n $ghrem ]] || die "no remote found for github.user '$ghusr'"
 
