@@ -2,7 +2,9 @@
 which fswatch rsync >/dev/null || usg 1 "missing a prerequisite"
 
 rsync_from=$(pwd)/
-rsync_to="isao@raisegray-vm0.corp.yahoo.com:repos/$(basename $rsync_from)"
+
+default_to="isao@raisegray-vm0.corp.yahoo.com:repos/$(basename $rsync_from)"
+rsync_to=${1:-$default_to}
 
 rsync_cmd="rsync --recursive --links --safe-links --update --delete --itemize-changes --exclude-from=.gitignore $rsync_from $rsync_to"
 
