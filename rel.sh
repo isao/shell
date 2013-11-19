@@ -96,7 +96,7 @@ stamp() {
 which git perl >/dev/null || usg 1 "missing executable"
 [[ -n $relnum ]] || usg 3 "missing release number"
 [[ -n $srcref ]] || usg 3 "missing source reference"
-exists $srcref   || usg 5 "git reference '$srcref' doesn't exist, specify the correct source branch name or ref."
+exists $srcref   || usg 5 "git reference '$srcref' doesn't exist.\nspecify the correct source branch name or ref."
 
 
 #
