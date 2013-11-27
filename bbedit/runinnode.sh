@@ -1,2 +1,2 @@
 #!/bin/sh -e
-/usr/local/bin/node "$BB_DOC_PATH"
+/usr/local/bin/node --use_strict "$BB_DOC_PATH"
