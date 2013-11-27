@@ -19,7 +19,7 @@
 					<key>Tab Scrollback Restorable</key>
 					<true/>
 					<key>Tab Session Class ID</key>
-					<string>46B224C7-C802-455D-B0C5-760D260F87CF</string>
+					<string>D9AE1866-5201-4373-8FF0-D886F422A2E7</string>
 					<key>Tab Settings</key>
 					<dict>
 						<key>BackgroundColor</key>
@@ -237,15 +237,15 @@
 					<key>Tab Settings Name</key>
 					<string>Iy Air</string>
 					<key>Tab Title</key>
-					<string>isao@happyboy:~/Library</string>
+					<string>isao@happyboy:~</string>
 					<key>TabSelected</key>
-					<false/>
+					<true/>
 				</dict>
 				<dict>
 					<key>Tab Scrollback Restorable</key>
 					<true/>
 					<key>Tab Session Class ID</key>
-					<string>C4BE1C95-8DBD-4C30-904F-2D40A467F19A</string>
+					<string>C076A0A4-2FF1-44D2-B90E-909CB75ED22D</string>
 					<key>Tab Settings</key>
 					<dict>
 						<key>BackgroundColor</key>
@@ -467,7 +467,7 @@
 					<key>Tab Working Directory URL</key>
 					<string>file:///Users/isao/Library/</string>
 					<key>TabSelected</key>
-					<true/>
+					<false/>
 				</dict>
 			</array>
 			<key>WindowNumber</key>
@@ -475,7 +475,7 @@
 		</dict>
 		<dict>
 			<key>Origin</key>
-			<string>{647, 361}</string>
+			<string>{646, 374}</string>
 			<key>ScrollerStyle</key>
 			<integer>1</integer>
 			<key>ShowsTabBar</key>
@@ -488,7 +488,7 @@
 					<key>Tab Scrollback Restorable</key>
 					<true/>
 					<key>Tab Session Class ID</key>
-					<string>F7522878-7FB2-430D-88AB-706637057015</string>
+					<string>5B079014-1B68-4DF1-B8D6-68869094B2A7</string>
 					<key>Tab Settings</key>
 					<dict>
 						<key>BackgroundColor</key>
@@ -708,17 +708,13 @@
 					<key>Tab Title</key>
 					<string>isao@happyboy:~</string>
 					<key>TabSelected</key>
-					<false/>
+					<true/>
 				</dict>
 				<dict>
-					<key>Tab Column Count</key>
-					<integer>80</integer>
-					<key>Tab Row Count</key>
-					<integer>19</integer>
 					<key>Tab Scrollback Restorable</key>
 					<true/>
 					<key>Tab Session Class ID</key>
-					<string>225F59A0-B575-48A7-AE24-E0791C8DCA77</string>
+					<string>4F6EDC84-3269-491B-9C53-5E9D50B5ABAE</string>
 					<key>Tab Settings</key>
 					<dict>
 						<key>BackgroundColor</key>
@@ -940,7 +936,7 @@
 					<key>Tab Working Directory URL</key>
 					<string>file:///Users/isao/</string>
 					<key>TabSelected</key>
-					<true/>
+					<false/>
 				</dict>
 			</array>
 			<key>WindowNumber</key>
@@ -948,7 +944,7 @@
 		</dict>
 	</array>
 	<key>name</key>
-	<string>Iy Air 2xRHS</string>
+	<string>IyAir2xRHS</string>
 	<key>type</key>
 	<string>Window Group</string>
 </dict>

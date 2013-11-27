@@ -45,3 +45,4 @@ defaults write com.apple.Terminal SecureKeyboardEntry 1
 defaults write com.apple.Terminal 'Default Window Settings' 'IyAir'
 defaults write com.apple.Terminal 'Startup Window Settings' 'IyAir'
 defaults write com.apple.Terminal 'Startup Window Group' 'IyAir2xRHS'
+defaults write com.apple.Terminal StartupAction 2
