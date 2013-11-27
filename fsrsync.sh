@@ -1,4 +1,10 @@
-#!/bin/sh -ex
+#!/bin/sh -e
+usg()
+{
+	echo $2
+	exit $1
+}
+
 which fswatch rsync >/dev/null || usg 1 "missing something"
 
 rsync_from=$(pwd)/
