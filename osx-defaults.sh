@@ -31,16 +31,3 @@ defaults write com.apple.AddressBook NSUserKeyEquivalents -dict-add "Show Groups
 # (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-
-## hardware
-
-# wait 24hrs before moving sleep-storage from ram to disk
-sudo pmset -a standbydelay 86400
-
-# Disable local Time Machine backups, save SSD space
-sudo tmutil disablelocal
-
-
-# see also
-# https://github.com/mathiasbynens/dotfiles/blob/master/.osx
-# http://osxdaily.com/2013/01/21/mac-slow-wake-from-sleep-fix/
