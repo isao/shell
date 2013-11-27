@@ -1,6 +1,4 @@
-#!/bin/sh
-set -e
-set -x
+#!/bin/sh -ex
 
 for i in ./*.scpt
 do
