@@ -1,7 +1,7 @@
 #!/bin/sh -eu
 
-[[ "$(whoami)" = root ]] || {
-    echo "requires root.\ntry: sudo $0"
+[[ $(whoami) = root ]] || {
+    echo "requires root.\ntry: sudo '$0'"
     exit 1
 }
 
