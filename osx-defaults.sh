@@ -31,3 +31,10 @@ defaults write com.apple.AddressBook NSUserKeyEquivalents -dict-add "Show Groups
 # (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
+# Terminal.app
+# TODO: read defaults to see if these window and group settings are loaded in
+# Terminal.app, and if needed, `open ./terminal/Iy*`
+defaults write com.apple.Terminal SecureKeyboardEntry 1
+defaults write com.apple.Terminal 'Default Window Settings' 'Iy Air'
+defaults write com.apple.Terminal 'Startup Window Settings' 'Iy Air'
+defaults write com.apple.Terminal 'Startup Window Group' 'Iy Air 2xRHS'
