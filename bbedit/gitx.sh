@@ -1,5 +1,6 @@
-#!/bin/sh
+#!/bin/sh -e
 
-dir=$(dirname "$BB_DOC_PATH")
-gitdir=$(cd $dir && git rev-parse --show-toplevel)
+docdir=$(dirname "$BB_DOC_PATH")
+gitdir=$(cd "$docdir" && git rev-parse --show-toplevel)
+
 /usr/local/bin/gitx --git-dir="$gitdir"
