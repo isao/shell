@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+BBEdit Language Module for TypeScript
+
+Put this file in
+   ~/Library/Application Support/BBEdit/Language Modules
+or equivalent.
+
+Forked from
+- https://gist.github.com/davethesoftwaredev/4056693
+- https://gist.github.com/vtbassmatt/7242970
+
+Which in turn were based on the language file for CoffeeScript found at 
+http://joyofmodeling.org/index.php/OSX/coffeescript-syntax-coloring-in-text-wrangler.html
+
+See also http://www.barebones.com/support/develop/
+
+-->
+<plist version="1.0">
+<dict>
+    <key>BBEditDocumentType</key>
+    <string>CodelessLanguageModule</string>
+    <key>BBLMLanguageDisplayName</key>
+    <string>TypeScript</string>
+    <key>BBLMLanguageCode</key>
+    <string>TySc</string>
+    <key>BBLMColorsSyntax</key>
+    <true/>
+    <key>BBLMScansFunctions</key>
+    <true/>
+    <key>BBLMIsCaseSensitive</key>
+    <true/>
+    <key>BBLMKeywordList</key>
+    <array>
+        <string>any</string>
+        <string>bool</string>
+        <string>boolean</string>
+        <string>break</string>
+        <string>case</string>
+        <string>catch</string>
+        <string>class</string>
+        <string>continue</string>
+        <string>debugger</string>
+        <string>declare</string>
+        <string>default</string>
+        <string>delete</string>
+        <string>do</string>
+        <string>else</string>
+        <string>export</string>
+        <string>extends</string>
+        <string>finally</string>
+        <string>for</string>
+        <string>function</string>
+        <string>get</string>
+        <string>if</string>
+        <string>implements</string>
+        <string>in</string>
+        <string>instanceof</string>
+        <string>let</string>
+        <string>module</string>
+        <string>new</string>
+        <string>number</string>
+        <string>private</string>
+        <string>public</string>
+        <string>return</string>
+        <string>set</string>
+        <string>string</string>
+        <string>super</string>
+        <string>switch</string>
+        <string>this</string>
+        <string>throw</string>
+        <string>try</string>
+        <string>typeof</string>
+        <string>var</string>
+        <string>void</string>
+        <string>while</string>
+        <string>with</string>
+    </array>
+    <key>BBLMSuffixMap</key>
+    <array>
+        <dict>
+            <key>BBLMLanguageSuffix</key>
+            <string>.ts</string>
+        </dict>
+    </array>
+    <key>Language Features</key>
+    <dict>
+        <key>Identifier and Keyword Character Class</key>
+        <string>0-9A-Z_a-z</string>
+
+        <key>Comment Pattern</key>
+        <string>(?x:
+            (?&gt;  //  .*        $              ) |
+            (?&gt;  /\* (?s:.*?)  (?: \*/ | \z ) )
+        )</string>
+
+        <key>String Pattern</key>
+        <string>(?x:
+            (?&gt;  `   (?s: \\. | [^`] )*?  (?: `   ) ) |
+            (?&gt;  /// (?s: \\. | [^/] )*?  (?: /// ) ) |
+            (?&gt;  """ (?s: \\. | [^"] )*?  (?: """ ) ) |
+            (?&gt;  ''' (?s: \\. | [^'] )*?  (?: ''' ) ) |
+            (?&gt;  "   (?s: \\. | [^"] )*?  (?: "   ) ) |
+            (?&gt;  '   (?s: \\. | [^'] )*?  (?: '   ) )
+        )</string>
+    </dict>
+</dict>
+</plist>
