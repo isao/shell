@@ -19,19 +19,22 @@ killall Dock
 # http://hints.macworld.com/article.php?story=20131123074223584
 # @ for Command, $ for Shift, ~ for Alt and ^ for Ctrl
 #   global shortcuts
-defaults write -g NSUserKeyEquivalents -dict-add "Zoom" -string "@/"
+defaults write -g NSUserKeyEquivalents -dict-add 'Zoom' -string '@/'
+
+defaults write -g NSUserKeyEquivalents -dict-add 'Hide Sidebar' -string '@~`'
+defaults write -g NSUserKeyEquivalents -dict-add 'Show Sidebar' -string '@~`'
 
 #   app shortcuts
-defaults write com.apple.Terminal NSUserKeyEquivalents -dict-add "Return to Default Size" -string "@~/"
+defaults write com.apple.Terminal NSUserKeyEquivalents -dict-add 'Return to Default Size' -string '@~/'
 
-defaults write com.apple.Mail NSUserKeyEquivalents -dict-add "Hide Mailbox List" -string "@~`"
-defaults write com.apple.Mail NSUserKeyEquivalents -dict-add "Show Mailbox List" -string "@~`"
+defaults write com.apple.Mail NSUserKeyEquivalents -dict-add 'Hide Mailbox List' -string '@~`'
+defaults write com.apple.Mail NSUserKeyEquivalents -dict-add 'Show Mailbox List' -string '@~`'
 
-defaults write com.apple.AddressBook NSUserKeyEquivalents -dict-add "Hide Groups" -string "@~`"
-defaults write com.apple.AddressBook NSUserKeyEquivalents -dict-add "Show Groups" -string "@~`"
+defaults write com.apple.AddressBook NSUserKeyEquivalents -dict-add 'Hide Groups' -string '@~`'
+defaults write com.apple.AddressBook NSUserKeyEquivalents -dict-add 'Show Groups' -string '@~`'
 
-defaults write com.apple.Finder NSUserKeyEquivalents -dict-add "Hide Sidebar" -string "@~`"
-defaults write com.apple.Finder NSUserKeyEquivalents -dict-add "Show Sidebar" -string "@~`"
+defaults write com.apple.Finder NSUserKeyEquivalents -dict-add 'Hide Sidebar' -string '@~`'
+defaults write com.apple.Finder NSUserKeyEquivalents -dict-add 'Show Sidebar' -string '@~`'
 
 
 # Enable full keyboard access for all controls
