@@ -44,8 +44,8 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # Terminal.app
 # TODO: read defaults to see if these window and group settings are loaded in
 # Terminal.app, and if needed, `open ./terminal/Iy*`
-defaults write com.apple.Terminal SecureKeyboardEntry 1
-defaults write com.apple.Terminal 'Default Window Settings' 'IyAir'
-defaults write com.apple.Terminal 'Startup Window Settings' 'IyAir'
-defaults write com.apple.Terminal 'Startup Window Group' 'IyAir2xRHS'
-defaults write com.apple.Terminal StartupAction 2
+# defaults write com.apple.Terminal SecureKeyboardEntry 1
+# defaults write com.apple.Terminal 'Default Window Settings' 'IyAir'
+# defaults write com.apple.Terminal 'Startup Window Settings' 'IyAir'
+# defaults write com.apple.Terminal 'Startup Window Group' 'IyAir2xRHS'
+# defaults write com.apple.Terminal StartupAction 2
