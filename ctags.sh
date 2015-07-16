@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash -e
 
 # Wrapper script to do BBEdit compatible ctags, optionally when invoked from a
 # BBEdit Script Menu.
@@ -6,13 +6,13 @@
 maketags()
 {
     cd "$dir"
-    logger "ctags $language $excludes $ctagflags $@"
+    logger "ctags $language $excludes $ctagflags $*"
     ctags $language $excludes $ctagflags $@
 }
 
 alert()
 {
-    osascript -e "display notification \"$dir\" with title \"ctags: $@\""
+    osascript -e "display notification \"$dir\" with title \"ctags: $1\""
 }
 
 # Handle invocation from BBEdit Script Menu
@@ -33,5 +33,13 @@ dir="$(git rev-parse --show-toplevel 2>/dev/null)"
     excludes="$excludes --exclude=OPEN_SOURCE_SOFTWARE --exclude=napa"
 }
 
+# pass through any args if not run as a git hook
+if [[ -n $GIT_DIR ]]
+then
+    args=''
+else
+    args=$*
+fi
+
 # main
-(maketags $@ && alert $(basename "$0")) &
+(maketags $args && alert "$(basename "$0")") &
