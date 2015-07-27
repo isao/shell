@@ -1,7 +1,9 @@
 #!/bin/bash -e
 
-# Wrapper script to do BBEdit compatible ctags, optionally when invoked from a
-# BBEdit Script Menu.
+# Wrapper script to do BBEdit compatible ctags when invoked by any of the these:
+#   1. from the command line
+#   2. from a BBEdit Script Menu
+#   3. from a .git/hooks file like post-checkout or post-merge
 
 maketags()
 {
