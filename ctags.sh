@@ -8,7 +8,6 @@
 maketags()
 {
     cd "$base"
-    #logger "ctags $language $excludes $ctagflags $*"
     ctags $language $excludes $ctagflags $@ $paths
 }
 
@@ -31,7 +30,7 @@ paths=
 
 # special case for MRGIT
 [[ $(git remote -v 2>/dev/null) =~ /MRGIT/_git/ReachClient ]] && {
-    paths='Web/scripts Web/typescript'
+    paths='Web/scripts Web/typescript Web/scripts/OPEN_SOURCE_SOFTWARE/typescriptDefinitions'
     language='--languages=typescript'
     excludes="$excludes --exclude=OPEN_SOURCE_SOFTWARE --exclude=napa"
 }
