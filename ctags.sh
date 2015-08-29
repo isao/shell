@@ -8,12 +8,12 @@
 maketags()
 {
     cd "$base"
-    ctags $language $excludes $ctagflags $@ $paths
+    /usr/local/bin/ctags $language $excludes $ctagflags $@ $paths
 }
 
 alert()
 {
-    osascript -e "display notification \"$base\" with title \"ctags: $1\""
+    osascript -e "display notification \"$base\" with title \"ctags: $(basename "$0")\""
 }
 
 # Handle invocation from BBEdit Script Menu
@@ -38,10 +38,10 @@ paths=
 # pass through any args if not run as a git hook
 if [[ -n $GIT_DIR ]]
 then
-    args=''
+    args=
 else
     args=$*
 fi
 
 # main
-(maketags $args && alert "$(basename "$0")") &
+(maketags $args && alert) &
