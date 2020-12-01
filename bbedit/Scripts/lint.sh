@@ -3,8 +3,12 @@ cd "$(dirname "$BB_DOC_PATH")"
 
 case "$BB_DOC_PATH" in
 
-    *.js )
-        eslint --format unix --fix "$BB_DOC_PATH" | bbresults
+    *.bash | *.sh | *.zsh )
+        shellcheck --format gcc "$BB_DOC_PATH" | bbresults --pattern gcc
+        ;;
+
+    *.css | *.less )
+        prettier --loglevel warn --parser css --write "$BB_DOC_PATH"
         ;;
 
     *.hbs )
@@ -13,12 +17,16 @@ case "$BB_DOC_PATH" in
         # TODO use --json and transform to format compatible with bbresult
         ;;
 
-    *.scss )
-        stylelint --formatter unix "$BB_DOC_PATH"
+    *.js )
+        eslint --format unix --fix "$BB_DOC_PATH" | bbresults
         ;;
 
-    *.bash | *.sh | *.zsh )
-        shellcheck --format gcc "$BB_DOC_PATH" | bbresults --pattern gcc
+    *.json | *.json5 )
+        prettier --loglevel warn --parser json --write "$BB_DOC_PATH"
+        ;;
+
+    *.scss )
+        stylelint --formatter unix --fix "$BB_DOC_PATH" | bbresults
         ;;
 
 esac
