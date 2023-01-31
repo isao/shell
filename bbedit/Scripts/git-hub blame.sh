@@ -1,5 +1,5 @@
 #!/bin/bash -e
-cd "$(dirname "$BB_DOC_PATH")"
+cd "$(realpath "$(dirname "$BB_DOC_PATH")")"
 
 line=""
 if [[ $BB_DOC_SELSTART_COLUMN -ne $BB_DOC_SELEND_COLUMN || $BB_DOC_SELSTART_LINE -ne $BB_DOC_SELEND_LINE ]]

@@ -2,7 +2,7 @@
 
 # Change working directory where project-specific tools & configs might be.
 #
-cd "$(dirname "$BB_DOC_PATH")"
+cd "$(realpath "$(dirname "$BB_DOC_PATH")")"
 repoPath=$(git rev-parse --show-toplevel 2>/dev/null)
 [[ -d $repoPath ]] && cd "$repoPath"
 
