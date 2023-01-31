@@ -18,7 +18,7 @@ case "$BB_DOC_PATH" in
 
     *.hbs )
         cd "$(git rev-parse --show-toplevel 2>/dev/null || pwd)" || exit 1
-        ember-template-lint "$BB_DOC_PATH"
+        ember-template-lint --fix "$BB_DOC_PATH"
         # TODO use --json and transform to format compatible with bbresult
         ;;
 
