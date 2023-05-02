@@ -1,10 +1,34 @@
-#!/bin/sh -e
+#!/bin/bash -e
 
-# Change working directory where project-specific tools & configs might be.
+is_package_root() {
+    [ -f package.json ] || [ -d .git ]
+}
+
+package_root_dir() {(
+    local lastPwd
+    while ! is_package_root && [ "$lastPwd" != "$PWD" ]
+    do
+        lastPwd="$PWD"
+        cd ..
+    done
+    is_package_root && pwd
+)}
+
+git_repo_root_dir() {
+    git rev-parse --show-toplevel 2>/dev/null
+}
+
+# First change to the BBEdit document's directory.
 #
 cd "$(realpath "$(dirname "$BB_DOC_PATH")")"
-repoPath=$(git rev-parse --show-toplevel 2>/dev/null)
-[[ -d $repoPath ]] && cd "$repoPath"
+
+# old way
+#repoPath=$(git_repo_root_dir)
+#[[ -d $repoPath ]] && cd "$repoPath"
+
+# Then change to the document's
+packageRootDir=$(package_root_dir)
+[[ -d "$packageRootDir" ]] && cd "$(package_root_dir)"
 
 case "$BB_DOC_PATH" in
 
@@ -17,9 +41,11 @@ case "$BB_DOC_PATH" in
         ;;
 
     *.hbs )
-        cd "$(git rev-parse --show-toplevel 2>/dev/null || pwd)" || exit 1
-        ember-template-lint --fix "$BB_DOC_PATH"
-        # TODO use --json and transform to format compatible with bbresult
+        prettier --write --loglevel warn "$BB_DOC_PATH"
+        ;;
+
+    *.svelte )
+        prettier --write --loglevel warn "$BB_DOC_PATH"
         ;;
 
     *.js )
